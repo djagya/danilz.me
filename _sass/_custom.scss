@@ -18,6 +18,21 @@
   font-family: "Lora", Helvetica, Arial, sans-serif;
 }
 
+// Sidebar
+.sidebar {
+  background: url('/public/assets/3-moons-sidebar.png') repeat-y;
+  background-size: 100% auto;
+  font-family: "Roboto Mono", serif;
+  color: #fff;
+  // todo - js change modes before turning night-mode off at all
+  //background-blend-mode: difference;
+  //background-blend-mode: hard-light;
+
+  .lead {
+    font-size: 1.2rem;
+  }
+}
+
 // Content and sidebar sizes
 @media (min-width: 48em) {
   .sidebar {
@@ -161,10 +176,4 @@
       //color: #3A1C6C;
     }
   }
-}
-
-// Sidebar image
-.sidebar {
-  background: url('/public/assets/3-moons-sidebar.png') repeat-y;
-  background-size: 100% auto;
 }

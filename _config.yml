@@ -8,7 +8,7 @@ permalink: pretty
 # Setup
 title: '@djagya'
 tagline: 'Home page'
-description: '<p>My little own home page and blog.</p> <p>И немного русского!</p>'
+description: 'My little own home page and blog.'
 
 url: https://danilz.me
 baseurl: /
