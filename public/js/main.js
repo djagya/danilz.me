@@ -5,7 +5,7 @@ window.onload = function () {
     var MOON_THEME_CLASS = 'theme-moon',
         STATES = ['difference', 'hard-light'];
     var moonSwitchers = document.getElementsByClassName('js-moon'),
-        currentState = 0,
+        currentState = 2,
         sidebar = document.getElementById('sidebar');
     Array.from(moonSwitchers).forEach(function (el) {
         el.onclick = function () {
