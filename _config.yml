@@ -20,6 +20,10 @@ author:
 paginate: 10
 excerpt_separator: "<!-- more -->"
 
-gems: [jekyll-paginate, jekyll-gist, jekyll-watch]
+gems:
+  - jekyll-paginate
+  - jekyll-gist
+  - jekyll-watch
+  - jekyll-sitemap
 
 # Custom vars
