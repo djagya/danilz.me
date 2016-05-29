@@ -1,7 +1,7 @@
 ---
 layout: page
-title: About
-order: 2
+title: Portfolio
+order: 1
 ---
 
 <p class="message">
