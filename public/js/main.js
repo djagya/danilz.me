@@ -2,14 +2,14 @@
 
 window.onload = function () {
     // Moon style toggler
-    const MOON_THEME_CLASS = 'theme-moon',
+    var MOON_THEME_CLASS = 'theme-moon',
         STATES = ['difference', 'hard-light'];
     var moonSwitchers = document.getElementsByClassName('js-moon'),
         currentState = 0,
         sidebar = document.getElementById('sidebar');
     Array.from(moonSwitchers).forEach(function (el) {
         el.onclick = function () {
-            let className = document.body.className;
+            var className = document.body.className;
 
             if (className.indexOf(MOON_THEME_CLASS) < 0) {
                 document.body.className += ' ' + MOON_THEME_CLASS;
