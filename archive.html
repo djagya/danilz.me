@@ -1,0 +1,25 @@
+---
+layout: page
+title: Archive
+order: 1
+---
+
+<div class="archive-posts">
+    {% for post in site.posts %}
+
+    {% assign currentYear = post.date | date: "%Y" %}
+    {% if currentYear != lastYear %}
+    <h2 class="archive-year">{{ currentYear }}</h2>
+    {% assign lastYear = currentYear %}
+    {% endif %}
+
+    <div class="archive-item">
+        <a href="{{ post.url }}">
+            {{ post.title }}
+        </a>
+
+        <time>{{ post.date | date: "%B %-d, %Y" }}</time>
+    </div>
+    {% endfor %}
+</div>
+

@@ -1,9 +1,16 @@
+// Titles
 .sidebar-about h1 {
   color: #fff;
   margin-top: 0;
   font-family: "Roboto Mono", serif;
   font-weight: 300;
   font-size: 3.25rem;
+  text-align: center;
+}
+
+.page-title {
+  font-family: "Roboto Mono", serif;
+  font-weight: 300;
   text-align: center;
 }
 
@@ -63,5 +70,54 @@
 @media (max-width: 64em) {
   .sidebar {
     padding: 1rem 0;
+  }
+}
+
+// Archive
+.archive-posts {
+  margin: 0 4rem;
+}
+
+.archive-year {
+  font-family: "Roboto Mono", serif;
+  font-weight: bold;
+
+  &:not(:first-child) {
+    margin-top: 2rem;
+  }
+}
+
+.archive-item {
+  time {
+    float: right;
+    color: lighten(#515151, 40%);
+  }
+}
+
+// Themes
+.theme-base-green {
+  .sidebar {
+    background-color: #2ECC71;
+  }
+  .content a, .related-posts li a:hover {
+    color: #2ECC71;
+  }
+}
+
+.theme-base-light-green {
+  .sidebar {
+    background-color: rgb(172, 194, 103);
+  }
+  .content a, .related-posts li a:hover {
+    color: rgb(172, 194, 103);
+  }
+}
+
+.theme-base-dark-green {
+  .sidebar {
+    background-color: rgb(104, 119, 4);
+  }
+  .content a, .related-posts li a:hover {
+    color: rgb(104, 119, 4);
   }
 }
