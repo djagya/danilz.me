@@ -17,7 +17,8 @@ author:
   name: 'Danil Zakablukovskii'
   email: danil.kabluk@gmail.com
 
-paginate: 5
+paginate: 10
+excerpt_separator: "<!-- more -->"
 
 gems: [jekyll-paginate, jekyll-gist, jekyll-watch]
 
