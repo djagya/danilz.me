@@ -75,7 +75,13 @@
 
 // Archive
 .archive-posts {
-  margin: 0 4rem;
+  margin: 0 2rem;
+}
+
+@media (min-width: 48em) {
+  .archive-posts {
+    margin: 0 4rem;
+  }
 }
 
 .archive-year {
@@ -88,9 +94,22 @@
 }
 
 .archive-item {
+  overflow: auto; /* clearfix */
+  margin-bottom: 1rem;
+
   time {
-    float: right;
+    display: block;
     color: lighten(#515151, 40%);
+  }
+}
+
+@media (min-width: 48em) {
+  .archive-item time {
+    float: right;
+  }
+
+  .archive-item {
+    margin-bottom: .5rem;
   }
 }
 

@@ -14,11 +14,11 @@ order: 1
     {% endif %}
 
     <div class="archive-item">
+        <time>{{ post.date | date: "%B %-d, %Y" }}</time>
+
         <a href="{{ post.url }}">
             {{ post.title }}
         </a>
-
-        <time>{{ post.date | date: "%B %-d, %Y" }}</time>
     </div>
     {% endfor %}
 </div>
