@@ -97,6 +97,10 @@
   overflow: auto; /* clearfix */
   margin-bottom: 1rem;
 
+  a {
+    text-decoration: underline;
+  }
+
   time {
     display: block;
     color: lighten(#515151, 40%);
