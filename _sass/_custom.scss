@@ -1,36 +1,40 @@
 // Titles
-.sidebar-about h1 {
-  color: #fff;
-  margin-top: 0;
-  font-family: "Roboto Mono", serif;
-  font-weight: 300;
-  font-size: 3.25rem;
-  text-align: center;
-}
-
 .page-title {
-  font-family: "Roboto Mono", serif;
+  font-family: $titleFont;
   font-weight: 300;
   text-align: center;
-}
-
-.pagination {
-  font-family: "Lora", Helvetica, Arial, sans-serif;
 }
 
 // Sidebar
 .sidebar {
-  background: url('/public/assets/3-moons-sidebar.png') repeat-y;
-  background-color: black !important;
-  background-size: 100% auto;
-  font-family: "Roboto Mono", serif;
-  color: #fff;
-  // todo - js change modes before turning night-mode off at all
-  //background-blend-mode: difference;
-  //background-blend-mode: hard-light;
+  .sidebar-about {
+    * {
+      font-family: $titleFont;
+      font-weight: 300;
+    }
+
+    h1 {
+      color: #fff;
+      margin-top: 0;
+      font-size: 3.25rem;
+      text-align: center;
+    }
+  }
 
   .lead {
     font-size: 1.2rem;
+  }
+}
+
+.theme-moon {
+  .sidebar {
+    background: url('/public/assets/3-moons-sidebar.png') repeat-y;
+    background-color: black !important;
+    background-size: 100% auto;
+    color: rgba(255, 255, 255, 0.8);
+    // todo - js change modes before turning night-mode off at all
+    //background-blend-mode: difference;
+    //background-blend-mode: hard-light;
   }
 }
 
@@ -101,7 +105,7 @@
 }
 
 .archive-year {
-  font-family: "Roboto Mono", serif;
+  font-family: $titleFont;
   font-weight: bold;
 
   &:not(:first-child) {
