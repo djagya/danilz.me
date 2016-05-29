@@ -97,6 +97,10 @@
   overflow: auto; /* clearfix */
   margin-bottom: 1rem;
 
+  a {
+    text-decoration: underline;
+  }
+
   time {
     display: block;
     color: lighten(#515151, 40%);
@@ -111,6 +115,19 @@
   .archive-item {
     margin-bottom: .5rem;
   }
+}
+
+// Code highlighter through ```
+.highlighter-rouge {
+  margin: 0 1rem;
+}
+
+// Post metadata
+.post-meta {
+  display: block;
+  margin-top: -.5rem;
+  margin-bottom: 1rem;
+  color: #9a9a9a;
 }
 
 // Themes
@@ -134,9 +151,14 @@
 
 .theme-base-dark-green {
   .sidebar {
-    background-color: rgb(104, 119, 4);
+    background-color: #687704;
   }
   .content a, .related-posts li a:hover {
-    color: rgb(104, 119, 4);
+    color: #687704;
+
+    &:visited {
+      color: #49001B;
+      //color: #3A1C6C;
+    }
   }
 }
