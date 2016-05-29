@@ -7,14 +7,61 @@
   text-align: center;
 }
 
+.pagination {
+  font-family: "Lora", Helvetica, Arial, sans-serif;
+}
+
+// Content and sidebar sizes
 @media (min-width: 48em) {
-  /* Sidebar footer for not sticky sidebar */
-  .sidebar .container:not(.sidebar-sticky) .sidebar-footer {
-    position: absolute;
-    bottom: 1rem;
+  .sidebar {
+    width: 16rem;
+
+    /* Sidebar footer for not sticky sidebar */
+    .container:not(.sidebar-sticky) .sidebar-footer {
+      position: absolute;
+      bottom: 0;
+    }
+  }
+
+  .content {
+    max-width: 28rem;
+    margin-left: 18rem;
+    margin-right: 2rem;
+  }
+
+  .layout-reverse .content {
+    max-width: 28rem;
+    margin-left: 2rem;
+    margin-right: 18rem;
   }
 }
 
-.pagination {
-  font-family: "Lora", Helvetica, Arial, sans-serif;
+@media (min-width: 64em) {
+  .sidebar {
+    width: 18rem;
+
+    /* Sidebar footer for not sticky sidebar */
+    .container:not(.sidebar-sticky) .sidebar-footer {
+      position: absolute;
+      bottom: 1rem;
+    }
+  }
+
+  .content {
+    max-width: 46rem;
+    margin-left: 22rem;
+    margin-right: 4rem;
+  }
+
+  .layout-reverse .content {
+    max-width: 46rem;
+    margin-left: 4rem;
+    margin-right: 22rem;
+  }
+}
+
+@media (max-width: 64em) {
+  .sidebar {
+    padding: 1rem 0;
+  }
 }
