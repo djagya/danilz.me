@@ -12,7 +12,10 @@ title: Home
             </a>
         </h1>
 
-        <span class="post-date">{{ post.date | date_to_string }}</span>
+        <div class="post-meta">
+            <time>{{ post.date | date_to_string }},</time>
+            {{ post.content | number_of_words | plus: 275 | divided_by: 275 | append: " minutes to read" }}
+        </div>
 
         {{ post.excerpt }}
 
