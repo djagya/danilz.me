@@ -1,0 +1,190 @@
+// Content and sidebar sizes
+@media (min-width: 48em) {
+  .sidebar {
+    width: 16rem;
+
+    /* Sidebar footer for not sticky sidebar */
+    .container:not(.sidebar-sticky) .sidebar-footer {
+      position: absolute;
+      bottom: 0;
+    }
+  }
+
+  .content {
+    max-width: 28rem;
+    margin-left: 18rem;
+    margin-right: 2rem;
+  }
+
+  .layout-reverse .content {
+    max-width: 28rem;
+    margin-left: 2rem;
+    margin-right: 18rem;
+  }
+}
+
+@media (min-width: 64em) {
+  .sidebar {
+    width: 18rem;
+
+    /* Sidebar footer for not sticky sidebar */
+    .container:not(.sidebar-sticky) .sidebar-footer {
+      position: absolute;
+      bottom: 1rem;
+    }
+  }
+
+  .content {
+    max-width: 46rem;
+    margin-left: 22rem;
+    margin-right: 4rem;
+  }
+
+  .layout-reverse .content {
+    max-width: 46rem;
+    margin-left: 4rem;
+    margin-right: 22rem;
+  }
+}
+
+@media (max-width: 64em) {
+  .sidebar {
+    padding: 1rem 0;
+  }
+}
+
+// Titles
+.page-title {
+  font-family: $titleFont;
+  font-weight: 300;
+  text-align: center;
+}
+
+// Sidebar
+.sidebar {
+  .sidebar-about {
+    * {
+      font-family: $titleFont;
+      font-weight: 300;
+    }
+
+    h1 {
+      color: #fff;
+      margin-top: 0;
+      font-size: 3.25rem;
+      text-align: center;
+    }
+  }
+
+  .lead {
+    font-size: 1.2rem;
+  }
+}
+
+// preload moon image
+.sidebar {
+  background: url('/public/assets/3-moons-sidebar.png') repeat-y -9999px -9999px;
+}
+
+.theme-moon {
+  .sidebar {
+    background-position: top left;
+    background-color: black;
+    background-size: 100% auto;
+    color: rgba(255, 255, 255, 0.8);
+  }
+}
+
+.js-moon {
+  cursor: pointer;
+}
+
+// Archive
+.archive-posts {
+  margin: 0 2rem;
+}
+
+@media (min-width: 48em) {
+  .archive-posts {
+    margin: 0 4rem;
+  }
+}
+
+.archive-year {
+  font-family: $titleFont;
+  font-weight: bold;
+
+  &:not(:first-child) {
+    margin-top: 2rem;
+  }
+}
+
+.archive-item {
+  overflow: auto; /* clearfix */
+  margin-bottom: 1rem;
+
+  a {
+    text-decoration: underline;
+  }
+
+  time {
+    display: block;
+    color: lighten(#515151, 40%);
+  }
+}
+
+@media (min-width: 48em) {
+  .archive-item time {
+    float: right;
+  }
+
+  .archive-item {
+    margin-bottom: .5rem;
+  }
+}
+
+// Code highlighter through ```
+.highlighter-rouge {
+  margin: 0 1rem;
+}
+
+// Post metadata
+.post-meta {
+  display: block;
+  margin-top: -.5rem;
+  margin-bottom: 1rem;
+  color: #9a9a9a;
+}
+
+// Themes
+.theme-base-green {
+  .sidebar {
+    background-color: #2ECC71;
+  }
+  .content a, .related-posts li a:hover {
+    color: #2ECC71;
+  }
+}
+
+.theme-base-light-green {
+  .sidebar {
+    background-color: rgb(172, 194, 103);
+  }
+  .content a, .related-posts li a:hover {
+    color: rgb(172, 194, 103);
+  }
+}
+
+.theme-base-dark-green {
+  .sidebar {
+    background-color: #687704;
+  }
+  .content a, .related-posts li a:hover {
+    color: #687704;
+
+    &:visited {
+      color: #49001B;
+      //color: #3A1C6C;
+    }
+  }
+}
