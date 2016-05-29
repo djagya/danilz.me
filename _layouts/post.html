@@ -6,7 +6,7 @@ layout: default
     <h1 class="post-title">{{ page.title }}</h1>
     <div class="post-meta">
         <time>{{ page.date | date_to_string }},</time>
-        {{ content | number_of_words | plus: 275 | divided_by: 275 | append: " minutes to read" }}
+        {{ content | number_of_words | plus: 275 | divided_by: 275 | append: ' min read' }}
     </div>
 
     {{ content | replace: '<!-- more -->', '<a id="read-more"></a>' }}

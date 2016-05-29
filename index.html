@@ -14,7 +14,7 @@ title: Home
 
         <div class="post-meta">
             <time>{{ post.date | date_to_string }},</time>
-            {{ post.content | number_of_words | plus: 275 | divided_by: 275 | append: " minutes to read" }}
+            {{ post.content | number_of_words | plus: 275 | divided_by: 275 | append: ' min read' }}
         </div>
 
         {{ post.excerpt }}
@@ -22,7 +22,7 @@ title: Home
         {% if (post.content | number_of_words) > (post.excerpt | number_of_words) %}
         <p>
             <a href="{{ post.url }}#read-more">
-                Read more <i class="fa fa-arrow-circle-right"></i>
+                Read more &rsaquo;
             </a>
         </p>
         {% endif %}
