@@ -2,6 +2,7 @@
 layout: page
 title: About
 order: 2
+published: false
 ---
 
 <p class="message">

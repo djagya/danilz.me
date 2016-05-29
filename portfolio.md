@@ -2,6 +2,7 @@
 layout: page
 title: Portfolio
 order: 1
+published: false
 ---
 
 <p class="message">
