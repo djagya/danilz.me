@@ -53,6 +53,15 @@
   }
 }
 
+// Typograph
+strong {
+  color: inherit;
+}
+
+p + ul {
+  margin-top: -1rem;
+}
+
 // Titles
 .page-title {
   font-family: $titleFont;
