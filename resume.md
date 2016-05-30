@@ -5,6 +5,8 @@ order: 2
 published: true
 ---
 
+TODO: check grammar and other thigns
+
 My name is Danil Zakablukovskii,  
 I'm a full-stack developer (more backend than frontend).
 
