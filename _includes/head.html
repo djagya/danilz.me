@@ -13,13 +13,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 
     <!-- Site-related meta -->
-    {% capture title %}
     {% if page.title %}
-    {{ page.title | escape }} &middot; {{ site.title | escape }}
+    {% capture title %}{{ page.title | escape }} &middot; {{ site.title | escape }}{% endcapture %}
     {% else %}
-    {{ site.title | escape }} &middot; {{ site.tagline | escape }}
+    {% capture title %}{{ site.title | escape }} &middot; {{ site.tagline | escape }}{% endcapture %}
     {% endif %}
-    {% endcapture %}
     <title>
         {{ title }}
     </title>
