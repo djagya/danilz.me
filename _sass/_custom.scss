@@ -53,6 +53,48 @@
   }
 }
 
+@media print {
+  // hide page url and title
+  @page {
+    size: auto;   /* auto is the initial value */
+    margin: 0;  /* this affects the margin in the printer settings */
+  }
+
+  .sidebar * {
+    display: none !important;
+  }
+
+  .content {
+    padding: 0;
+  }
+
+  .print {
+    display: block;
+
+    @at-root span#{&} {
+      display: inline;
+    }
+  }
+
+  .no-print {
+    display: none;
+  }
+}
+
+@media not print {
+  .print {
+    display: none;
+  }
+
+  .no-print {
+    display: block;
+
+    @at-root span#{&} {
+      display: inline;
+    }
+  }
+}
+
 // Typograph
 strong {
   color: inherit;
@@ -185,9 +227,11 @@ p + ul {
   .content a, .related-posts li a:hover {
     color: #687704;
 
-    &:visited {
-      color: #49001B;
-      //color: #3A1C6C;
+    @media not print {
+      &:visited {
+        color: #49001B;
+        //color: #3A1C6C;
+      }
     }
   }
 }
