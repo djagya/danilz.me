@@ -90,15 +90,9 @@ p + ul {
   }
 }
 
-// preload moon image
-.sidebar {
-  background: url('/public/assets/3-moons-sidebar.png') repeat-y -9999px -9999px;
-}
-
 .theme-moon {
   .sidebar {
-    background-position: top left;
-    background-color: black;
+    background: black url('/public/assets/3-moons-sidebar.png') repeat-y;
     background-size: 100% auto;
     color: rgba(255, 255, 255, 0.8);
   }
