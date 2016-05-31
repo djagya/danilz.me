@@ -70,8 +70,8 @@ Mathematics, Physic, Biology, Astronomy - these branches of science have always 
 
 <hr/>
 
-<span class="no-print">**[Download this Resume]({{ site.baseurl }}files/resume.pdf){:target="_blank"}** ·</span>
-<span class="print">**[View this Resume online]({{ site.url }}{{ site.baseurl }}files/resume_danil_zakablukovskii.pdf){:target="_blank"}** ·</span>
+<span class="no-print">**[Download this Resume]({{ site.baseurl }}public/files/resume_danil_zakablukovskii.pdf){:target="_blank"}** ·</span>
+<span class="print">**[View this Resume online]({{ site.url }}{{ site.baseurl }}{{ page.url }}){:target="_blank"}** ·</span>
 [Github](http://github.com/djagya){:target="_blank"} ·
 [Upwork](http://www.upwork.com/o/profiles/users/_~01f7bfe08002f58952/){:target="_blank"}
 
