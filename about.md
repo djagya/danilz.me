@@ -15,8 +15,8 @@ Here we create/upgrade a report-/tracking-/analytic-system for non-commercial ra
 
 (TODO: make links, address etc. pretty)
 
-[Github](http://github.com/djagya){:target="_blank"} ·
-[Upwork](http://www.upwork.com/o/profiles/users/_~01f7bfe08002f58952/){:target="_blank"}
+<a href="https://github.com/djagya" rel="me nofollow" target="_blank">Github</a> ·
+<a href="https://www.upwork.com/o/profiles/users/_~01f7bfe08002f58952/" rel="me nofollow" target="_blank">Upwork</a>
 
 <address>
   <a href="mailto:danil.kabluk@gmail.com">danil.kabluk@gmail.com</a> ·
