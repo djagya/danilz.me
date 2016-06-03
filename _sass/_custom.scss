@@ -124,6 +124,13 @@ p + ul {
       margin-top: 0;
       font-size: 3.25rem;
       text-align: center;
+
+      span {
+        font-family: "PT Sans", Helvetica, Arial, sans-serif;
+        font-size: 1rem;
+        display: block;
+        margin-top: 0.5rem;
+      }
     }
   }
 
