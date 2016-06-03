@@ -6,7 +6,7 @@ order: 100
 
 TODO: check grammar and other thigns
 
-#### Hi, my name is Danil Zakablukovskii.
+#### Hi, my name is Danil Zakablukovskii. (Данил Закаблуковский in Russian)
 
 I'm a backend developer + a bit frontend. Though my current job-title is "Senior Software Engineer", ha-ha.
 
