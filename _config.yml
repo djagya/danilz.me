@@ -26,4 +26,7 @@ gems:
   - jekyll-watch
   - jekyll-sitemap
 
+sass:
+  style: compressed
+
 # Custom vars
