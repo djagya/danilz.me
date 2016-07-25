@@ -12,25 +12,25 @@ layout: default
     {{ content | replace: '<!-- more -->', '<a id="read-more"></a>' }}
 </div>
 
-<div class="comments">
-    <div id="disqus_thread"></div>
-    <script>
-        var disqus_config = function () {
-            this.page.url = "{{ site.url }}{{ site.baseurl }}{{ page.url}}";
-            this.page.identifier = "{{ page.date | date_to_string }}.{{ page.title }}";
-        };
-        (function () {
-            var d = document, s = d.createElement('script');
+<!--<div class="comments">-->
+<!--<div id="disqus_thread"></div>-->
+<!--<script>-->
+<!--var disqus_config = function () {-->
+<!--this.page.url = "{{ site.url }}{{ site.baseurl }}{{ page.url}}";-->
+<!--this.page.identifier = "{{ page.date | date_to_string }}.{{ page.title }}";-->
+<!--};-->
+<!--(function () {-->
+<!--var d = document, s = d.createElement('script');-->
 
-            s.src = '//danilz.disqus.com/embed.js';
+<!--s.src = '//danilz.disqus.com/embed.js';-->
 
-            s.setAttribute('data-timestamp', +new Date());
-            (d.head || d.body).appendChild(s);
-        })();
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments
-        powered by Disqus.</a></noscript>
-</div>
+<!--s.setAttribute('data-timestamp', +new Date());-->
+<!--(d.head || d.body).appendChild(s);-->
+<!--})();-->
+<!--</script>-->
+<!--<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments-->
+<!--powered by Disqus.</a></noscript>-->
+<!--</div>-->
 
 <div class="related">
     <h2>Related Posts</h2>
