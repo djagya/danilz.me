@@ -142,6 +142,13 @@ p + ul {
   .lead {
     font-size: 1.2rem;
   }
+
+  .sidebar-footer {
+    font-size: 0.8rem;
+    p {
+      margin-bottom: 0;
+    }
+  }
 }
 
 .theme-moon {
