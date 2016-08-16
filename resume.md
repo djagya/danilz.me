@@ -5,10 +5,9 @@ order: 2
 published: true
 ---
 
-TODO: check grammar and other thigns
-
-My name is Danil Zakablukovskii,  
-I'm a full-stack developer (more backend than frontend).
+My name is **Danil Zakablukovskii**, I live and study in Berlin and have Student visa (I wouldn't mind to change it to a blue card :).  
+I'm a full-stack developer (more backend than frontend).  
+I'm from Russia and **I'm not an EU citizen** yet.
 
 - 5+ years of experience
 - 3.500+ worked hours on Upwork (and 100% Job Success!)
@@ -18,20 +17,20 @@ My main tech stack is:
 <dl>
     <dt>Backend:</dt>
     <dd>
-    PHP (should I write PHP7 here now?), node.js, Yii/Yii2, Laravel, Redis, MySql, PostgreSQL, Websockets
+    PHP (PHP7 too ofc), node.js, Yii/Yii2, Laravel, Redis, MySql, PostgreSQL
     </dd>
 
     <dt>Frontend (I'm not as good at it as in backend):</dt>
     <dd>
-    HTML (HTML5), JS (es6), CSS (SCSS, Less), jQuery, learning Ansible2 (or React/Redux, I'm not ever sure yet), Grunt, Bower
+    HTML (HTML5), JS (es6), CSS (SCSS, Less), jQuery, learning React/Redux, Grunt/Gulp/Webpack..., packet managers (npm, bower, ...)
     </dd>
 
     <dt>Server/Sysop:</dt>
-    <dd>Linux, Ansible, MySQL (configuration), Sphinx, nginx, Apache</dd>
+    <dd>Linux, Ansible, have some good experience in MySQL, Sphinx, nginx, Apache configuration</dd>
 
     <dt>Other:</dt>
     <dd>
-      Git, Grunt, Bower, API (usage and creation), social services integration (FB, Twitter, Google/YouTube, SoundCloud, etc), Ruby + RoR (junior-level)
+      Websocket, Git, API building/integration experience, social services integration (FB, Twitter, Google/YouTube, SoundCloud, etc), a bit of Ruby/Python/Java
     </dd>
 </dl>
 
@@ -40,7 +39,7 @@ My main tech stack is:
 **Employment:**
 
 - [Spinitron](http://spinitron.com/){:target="_blank"}, spring 2015 - present  
-    Autocomplete (Sphinx + iTunes and Musicbrainz databases), high availability.
+    Autocomplete (Sphinx + iTunes and Musicbrainz databases), high availability, still in development, so this description will be updated later.
 - [Tronic.fm](http://tronic.fm/){:target="_blank"}, spring 2014 - spring 2015  
     Image processing, whole bunch of social services related work (crawlers, api usage, content creation and obtaining), Overture/FB/Resident Advisor tight Events and RSVP's integration.
 - [Medvedev Marketing](http://medvedevmarketing.ru/){:target="_blank"}, summer 2012 - autumn 2013
@@ -68,8 +67,8 @@ Also I like to create and mix music (but actually didn't do anything real yet).
 I really like studying, new knowledge, interesting and difficult things/tasks.  
 Mathematics, Physic, Biology, Astronomy - these branches of science have always interested me, so in my alternative life I would become a Biological Engineer or something like that.
 
-<hr/>
-
+<hr class="no-print"/>
+<div>
 <span class="no-print">**[Download this Resume]({{ site.baseurl }}public/files/resume_danil_zakablukovskii.pdf){:target="_blank"}** ·</span>
 <span class="print">**[View this Resume online]({{ site.url }}{{ site.baseurl }}{{ page.url }}){:target="_blank"}** ·</span>
 <a href="https://github.com/djagya" rel="me nofollow" target="_blank">Github</a> ·
@@ -81,3 +80,6 @@ Mathematics, Physic, Biology, Astronomy - these branches of science have always 
   Skype: <a href="skype:re_coil">re_coil</a> ·
   Berlin, Germany
 </address>
+</div>
+
+<hr class="print"/>
