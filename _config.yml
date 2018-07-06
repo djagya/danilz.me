@@ -11,7 +11,7 @@ tagline: 'Home page'
 description: 'My little own home page and blog.'
 
 url: http://danilz.me
-baseurl: /
+baseurl: '/'
 
 author:
   name: 'Danil Zakablukovskii, Данил Закаблуковский'
