@@ -17,7 +17,7 @@ Links: <a href="https://github.com/djagya" rel="me nofollow" target="_blank">Git
 <a href="https://www.upwork.com/o/profiles/users/_~01f7bfe08002f58952/" rel="me nofollow" target="_blank">Upwork</a>
 
 <address>
-  <a href="mailto:danil.kabluk@gmail.com">danil.kabluk@gmail.com</a> ·
+  <a href="mailto:work@danilz.me">work@danilz.me</a> ·
   Skype: <a href="skype:re_coil">re_coil</a> ·
   Berlin, Germany
 </address>
