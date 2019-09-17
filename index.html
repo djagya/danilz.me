@@ -1,48 +1,194 @@
----
-layout: default
-title: Home
----
+<!DOCTYPE html>
+<html lang="en-us">
 
-<div class="posts">
-    {% for post in paginator.posts %}
-    <div class="post">
-        <h1 class="post-title">
-            <a href="{{ post.url }}">
-                {{ post.title }}
-            </a>
-        </h1>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
 
-        <div class="post-meta">
-            <time>{{ post.date | date_to_string }},</time>
-            {{ post.content | number_of_words | plus: 275 | divided_by: 275 | append: ' min read' }}
+    <!-- Enable responsiveness on mobile devices-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+    <!-- Site-related meta -->
+    <title>Danil Zakablukovskii</title>
+
+    <meta name="description"
+          content="Personal page of Danil Zakablukovskii">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="/public/css/main.css">
+    <link href='https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Roboto+Mono:300,700&subset=latin'
+          rel='stylesheet' type='text/css'>
+
+    <!-- Icons -->
+    <link rel="shortcut icon" href="/public/favicon.ico">
+    <link rel="icon" type="image/png" sizes="192x192" href="/public/android-icon-192x192.png">
+    <link rel="manifest" href="/public/manifest.json">
+</head>
+
+
+<body class="theme-base-dark-green theme-moon">
+<!-- preload background image -->
+<img src="/public/assets/3-moons-sidebar.png" style="display:none;" alt="Sidebar image"/>
+
+<div class="sidebar" id="sidebar">
+    <div class="container">
+        <div class="sidebar-about">
+            <h1>
+                Danil Zakablukovskii
+                <span>a.k.a. @djagya</span>
+            </h1>
         </div>
 
-        {{ post.excerpt }}
+        <nav class="sidebar-nav">
+            <a class="sidebar-nav-item" href="https://github.com/djagya" target="_blank">GitHub</a>
+            <a class="sidebar-nav-item" href="https://stackoverflow.com/story/djagya" target="_blank">StackOverflow
+                Developer Story</a>
+        </nav>
 
-        {% if (post.content | number_of_words) > (post.excerpt | number_of_words) %}
-        <p>
-            <a href="{{ post.url }}#read-more">
-                Read more &rsaquo;
-            </a>
-        </p>
-        {% endif %}
+        <div class="sidebar-footer">
+            <p>
+                <a href="https://soundcloud.com/djagya" target="_blank" rel="me">SoundCloud</a> <a
+                    href="http://alchemy.danilz.me/" class="no-link" target="_blank">&tridot;</a>
+                <a href="https://www.instagram.com/djagya/" target="_blank" rel="me">Instagram</a>
+            </p>
+            <p>
+                <span class="js-moon">&copy;</span> now. All rights reserved.
+            </p>
+        </div>
     </div>
-    {% endfor %}
 </div>
 
-<div class="pagination">
-    {% if paginator.next_page %}
-    <a class="pagination-item older" href="{{ site.url }}page{{paginator.next_page}}">Older</a>
-    {% else %}
-    <span class="pagination-item older">Older</span>
-    {% endif %}
-    {% if paginator.previous_page %}
-    {% if paginator.page == 2 %}
-    <a class="pagination-item newer" href="{{ site.url }}">Newer</a>
-    {% else %}
-    <a class="pagination-item newer" href="{{ site.url }}page{{paginator.previous_page}}">Newer</a>
-    {% endif %}
-    {% else %}
-    <span class="pagination-item newer">Newer</span>
-    {% endif %}
+
+<div class="content container">
+    <div class="page">
+        <h1 class="page-title">Resume</h1>
+
+        <div class="print">
+                        <span class="no-print">
+        <a href="/public/files/resume_danil_zakablukovskii.pdf"
+           target="_blank"><strong>Download this Resume</strong></a> ·
+    </span>
+            <span class="print">
+         <a href="http://danilz.me/resume/"
+            target="_blank"><strong>View this Resume online</strong></a> ·
+    </span>
+            <a href="https://github.com/djagya" rel="me nofollow" target="_blank">Github</a> ·
+            <a href="https://www.upwork.com/o/profiles/users/_~01f7bfe08002f58952/" rel="me nofollow"
+               target="_blank">Upwork</a>
+
+            <address>
+                <a href="mailto:work@danilz.me">work@danilz.me</a> · Berlin, Germany
+            </address>
+        </div>
+
+        <hr class="print">
+
+        <p>
+            My name is <strong>Danil Zakablukovskii</strong>, I live and study in Berlin and still have a student visa
+            (I wouldn’t mind
+            to change it to a blue card :).<br>
+            I’m a full-stack developer (more backend than frontend).
+        </p>
+
+        <ul>
+            <li>5+ years of experience</li>
+            <li>3.500+ worked hours on Upwork (and 100% Job Success!)</li>
+            <li>Contributing in open-source projects (Yii2, Redis)</li>
+        </ul>
+
+        <p>My main tech stack is:</p>
+        <dl>
+            <dt>Backend:</dt>
+            <dd>
+                PHP (7), node.js, Python, Yii2, Laravel, Redis, MySQL (MariaDB), PostgreSQL, MongoDB, Sphinx
+            </dd>
+
+            <dt>Frontend:</dt>
+            <dd>
+                React/Redux, Grunt/Gulp/Webpack, jQuery, SASS
+            </dd>
+
+            <dt>DevOps:</dt>
+            <dd>Ansible, SaltStack</dd>
+
+            <dt>Other:</dt>
+            <dd>
+                Websockets, Git, API building/integration experience, social services integration (FB, Twitter,
+                Google/YouTube, SoundCloud, etc), high interest in UI/UX
+            </dd>
+        </dl>
+
+        <hr>
+
+        <p><strong>Employment:</strong></p>
+        <ul>
+            <li><a href="http://spinitron.com/" target="_blank">Spinitron</a>, spring 2015 - present<br>
+                Main feature is the autocomplete process for DJs (Sphinx over iTunes and Musicbrainz databases with a
+                lot of various hacks and tricks), high availability, real-time stuff (chat, updates, etc), integrations
+                with SoundCloud, Apple Music, Facebook, Twitter, Stripe. <br>
+                React, Redux for various components (as a chat).
+            </li>
+            <li><a href="http://tronic.fm/" target="_blank">Tronic.fm</a>, spring 2014 - spring 2015<br>
+                Image processing, whole bunch of social services related work (crawlers, api usage, content creation and
+                obtaining), Overture/FB/Resident Advisor tight Events and RSVP’s integration.
+            </li>
+            <li><a href="http://medvedevmarketing.ru/" target="_blank">Medvedev Marketing</a>, summer 2012 - autumn 2013
+            </li>
+        </ul>
+
+        <p><strong>Education:</strong></p>
+        <ul>
+            <li>HTW Berlin, spring 2015 - Present, Computer Science with focus on big data and neural networks</li>
+            <li>ISU Irkutsk, 2010 - 2012, Computer Science</li>
+        </ul>
+
+        <p><strong>Languages:</strong></p>
+        <ul>
+            <li>Russian - native speaker</li>
+            <li>English - Upper-Intermediate</li>
+            <li>German - Upper-Intermediate</li>
+        </ul>
+
+        <p><strong>Other:</strong></p>
+
+        <p>I keep these IT-related books on my table:</p>
+        <ul>
+            <li><a href="http://www.amazon.com/gp/product/0735619670/" target="_blank">“Code Complete”</a></li>
+            <li><a href="http://www.amazon.com/gp/product/020161622X/" target="_blank">“The Pragmatic Programmer: From
+                Journeyman to Master”</a></li>
+            <li><a href="http://www.amazon.com/gp/product/0262033844/" target="_blank">“Introduction to Algorithms”</a>
+            </li>
+        </ul>
+
+        <p>Also I like to create and mix <a href="https://soundcloud.com/djagya" target="_blank" rel="me">music</a>,
+            studying, getting new knowledge, solving interesting and difficult things/tasks.<br>
+            Mathematics, Physic, Biology, Astronomy - these branches of science have always interested me, so in my
+            alternative life I would become a Biological Engineer or something like that.</p>
+
+        <hr class="no-print">
+
+        <div class="no-print">
+            <span class="no-print">
+        <a href="/public/files/resume_danil_zakablukovskii.pdf"
+           target="_blank"><strong>Download this Resume</strong></a> ·
+    </span>
+            <span class="print">
+         <a href="http://danilz.me/resume/"
+            target="_blank"><strong>View this Resume online</strong></a> ·
+    </span>
+            <a href="https://github.com/djagya" rel="me nofollow" target="_blank">Github</a> ·
+            <a href="https://www.upwork.com/o/profiles/users/_~01f7bfe08002f58952/" rel="me nofollow"
+               target="_blank">Upwork</a>
+
+            <address>
+                <a href="mailto:work@danilz.me">work@danilz.me</a> · Berlin, Germany
+            </address>
+
+        </div>
+    </div>
 </div>
+
+<script src="/public/js/main.js"></script>
+</body>
+</html>

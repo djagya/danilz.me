@@ -3,6 +3,18 @@ body {
   color: $color;
 }
 
+.no-link {
+  text-decoration: none;
+  cursor: default;
+  user-select: none;
+
+  &:hover {
+    color: #A71D31;
+    text-shadow: 0 0 8px #91192b;
+    text-decoration: none;
+  }
+}
+
 // Content and sidebar sizes
 @media (min-width: 48em) {
   .sidebar {
@@ -119,6 +131,8 @@ p + ul, p + dl {
 // Sidebar
 .sidebar {
   .sidebar-about {
+    margin-bottom: 2rem;
+
     * {
       font-family: $titleFont;
       font-weight: 300;
@@ -127,15 +141,22 @@ p + ul, p + dl {
     h1 {
       color: #fff;
       margin-top: 0;
-      font-size: 3.25rem;
+      font-size: 1.5rem;
       text-align: center;
 
       span {
-        font-family: "PT Sans", Helvetica, Arial, sans-serif;
         font-size: 1rem;
         display: block;
         margin-top: 0.5rem;
       }
+    }
+  }
+
+  .sidebar-nav-item {
+    margin-bottom: 0.25rem;
+
+    &:hover {
+      color: #FFC107;
     }
   }
 
@@ -161,6 +182,7 @@ p + ul, p + dl {
 
 .js-moon {
   cursor: pointer;
+  user-select: none;
 }
 
 // Archive
