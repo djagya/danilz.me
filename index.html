@@ -16,33 +16,33 @@
           content="Personal page of Danil Zakablukovskii">
 
     <!-- CSS -->
-    <link rel="stylesheet" href="/public/css/main.css">
+    <link rel="stylesheet" href="public/css/main.css">
     <link href='https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Roboto+Mono:300,700&subset=latin'
           rel='stylesheet' type='text/css'>
 
     <!-- Icons -->
-    <link rel="shortcut icon" href="/public/favicon.ico">
-    <link rel="icon" type="image/png" sizes="192x192" href="/public/android-icon-192x192.png">
-    <link rel="manifest" href="/public/manifest.json">
+    <link rel="shortcut icon" href="public/favicon.ico">
+    <link rel="icon" type="image/png" sizes="192x192" href="public/android-icon-192x192.png">
+    <link rel="manifest" href="public/manifest.json">
 </head>
 
 
 <body class="theme-base-dark-green theme-moon">
 <!-- preload background image -->
-<img src="/public/assets/3-moons-sidebar.png" style="display:none;" alt="Sidebar image"/>
+<img src="public/assets/3-moons-sidebar.png" style="display:none;" alt="Sidebar image"/>
 
-<div class="sidebar" id="sidebar">
+<div class="sidebar" id="sidebar" style="background-blend-mode: hard-light;">
     <div class="container">
         <div class="sidebar-about">
             <h1>
                 Danil Zakablukovskii
-                <span>a.k.a. @djagya</span>
+                <span>@djagya</span>
             </h1>
         </div>
 
         <nav class="sidebar-nav">
             <a class="sidebar-nav-item" href="https://github.com/djagya" target="_blank">GitHub</a>
-            <a class="sidebar-nav-item" href="https://stackoverflow.com/story/djagya" target="_blank">StackOverflow
+            <a class="sidebar-nav-item" href="https://stackoverflow.com/story/djagya" target="_blank">SO
                 Developer Story</a>
         </nav>
 
@@ -53,7 +53,7 @@
                 <a href="https://www.instagram.com/djagya/" target="_blank" rel="me">Instagram</a>
             </p>
             <p>
-                <span class="js-moon">&copy;</span> now. All rights reserved.
+                <span class="js-moon">&copy;</span> now.
             </p>
         </div>
     </div>
@@ -62,97 +62,150 @@
 
 <div class="content container">
     <div class="page">
-        <h1 class="page-title">Resume</h1>
-
-        <div class="print">
-                        <span class="no-print">
-        <a href="/public/files/resume_danil_zakablukovskii.pdf"
-           target="_blank"><strong>Download this Resume</strong></a> ·
-    </span>
-            <span class="print">
-         <a href="http://danilz.me/resume/"
-            target="_blank"><strong>View this Resume online</strong></a> ·
-    </span>
-            <a href="https://github.com/djagya" rel="me nofollow" target="_blank">Github</a> ·
-            <a href="https://www.upwork.com/o/profiles/users/_~01f7bfe08002f58952/" rel="me nofollow"
-               target="_blank">Upwork</a>
-
+        <div class="row">
             <address>
-                <a href="mailto:work@danilz.me">work@danilz.me</a> · Berlin, Germany
+                <a href="mailto:work@danilz.me">djagya@fastmail.com</a> · Berlin, Germany
             </address>
+
+            <a href="public/files/CV_danil_zakablukovskii.pdf" target="_blank">download PDF</a>
         </div>
-
-        <hr class="print">
-
-        <p>
-            My name is <strong>Danil Zakablukovskii</strong>, I live and study in Berlin and still have a student visa
-            (I wouldn’t mind
-            to change it to a blue card :).<br>
-            I’m a full-stack developer (more backend than frontend).
-        </p>
-
-        <ul>
-            <li>5+ years of experience</li>
-            <li>3.500+ worked hours on Upwork (and 100% Job Success!)</li>
-            <li>Contributing in open-source projects (Yii2, Redis)</li>
-        </ul>
-
-        <p>My main tech stack is:</p>
-        <dl>
-            <dt>Backend:</dt>
-            <dd>
-                PHP (7), node.js, Python, Yii2, Laravel, Redis, MySQL (MariaDB), PostgreSQL, MongoDB, Sphinx
-            </dd>
-
-            <dt>Frontend:</dt>
-            <dd>
-                React/Redux, Grunt/Gulp/Webpack, jQuery, SASS
-            </dd>
-
-            <dt>DevOps:</dt>
-            <dd>Ansible, SaltStack</dd>
-
-            <dt>Other:</dt>
-            <dd>
-                Websockets, Git, API building/integration experience, social services integration (FB, Twitter,
-                Google/YouTube, SoundCloud, etc), high interest in UI/UX
-            </dd>
-        </dl>
 
         <hr>
 
-        <p><strong>Employment:</strong></p>
+        <div class="intro">
+            <p>
+                I'm a generalist software engineer with <b>7 years of experience</b>. Always searching for ways to widen
+                and
+                deepen
+                my professional domain, as learning brings joy to me.
+            </p>
+            <p>
+                I want <b>to help</b> to create a product (let it be a physical, digital one or even a game) that would
+                bring <b>usefulness</b> to this world or at least some <b>fun</b>.
+            </p>
+            <p>
+                I'm initiative, honest and direct (as many Russians). If something seems off to me, I would directly
+                speak
+                about
+                that and try to solve it of find a compromise.
+            </p>
+            <p>
+                Lately I'm eager to apply my skills in new parts of the industry, even if it means becoming a junior
+                again:
+                <b>AI</b> (image recognition, working with texts, models development), <b>game development</b>, <b>financial
+                sector</b> (HFT,
+                blockchain, banking).
+            </p>
+        </div>
+
+        <p>Skill set:</p>
         <ul>
-            <li><a href="http://spinitron.com/" target="_blank">Spinitron</a>, spring 2015 - present<br>
-                Main feature is the autocomplete process for DJs (Sphinx over iTunes and Musicbrainz databases with a
-                lot of various hacks and tricks), high availability, real-time stuff (chat, updates, etc), integrations
-                with SoundCloud, Apple Music, Facebook, Twitter, Stripe. <br>
-                React, Redux for various components (as a chat).
-            </li>
-            <li><a href="http://tronic.fm/" target="_blank">Tronic.fm</a>, spring 2014 - spring 2015<br>
-                Image processing, whole bunch of social services related work (crawlers, api usage, content creation and
-                obtaining), Overture/FB/Resident Advisor tight Events and RSVP’s integration.
-            </li>
-            <li><a href="http://medvedevmarketing.ru/" target="_blank">Medvedev Marketing</a>, summer 2012 - autumn 2013
-            </li>
+            <li>PHP, Javascript, Python, TypeScript</li>
+            <li>Yii2, Laravel, Next.js</li>
+            <li>MySQL, PostgreSQL, MongoDB, Redis</li>
+            <li>Sphinx, ElasticSearch</li>
+            <li>React, Redux, jQuery, CSS/SCSS</li>
+            <li>Webpack, Grunt, Gulp</li>
+            <li>Ansible, Salt, AWS</li>
+            <li>Git, REST API, Stripe, Websocket</li>
         </ul>
 
-        <p><strong>Education:</strong></p>
-        <ul>
-            <li>HTW Berlin, spring 2015 - Present, Computer Science with focus on big data and neural networks</li>
-            <li>ISU Irkutsk, 2010 - 2012, Computer Science</li>
-        </ul>
+        <hr>
 
-        <p><strong>Languages:</strong></p>
-        <ul>
-            <li>Russian - native speaker</li>
-            <li>English - Upper-Intermediate</li>
-            <li>German - Upper-Intermediate</li>
-        </ul>
+        <h2>Work Experience</h2>
+        <div>
+            <div>
+                <p class="row">
+                    <span>
+                        <b>Lead Software Engineer</b> at <a href="http://spinitron.com/" target="_blank">Spinitron</a>
+                    </span>
+                    <span>Mar 2015 - present</span>
+                </p>
+                <ul>
+                    <li>Rewrote 13 years old software serving 300+ radio stations from scratch, with clean, structured
+                        and maintainable code
+                    </li>
+                    <li>Worked on the core service component: music autocomplete – using external databases from Apple
+                        Music and Musicbrainz, making it quick, robust and consistent
+                    </li>
+                    <li>Developed new features from a concept to a fully functional front- and back-end code</li>
+                    <li>Implemented various integrations with 3rd-party services</li>
+                    <li>Created public REST API’s used by many clients for integrations</li>
+                    <li>Automated the deployment of development and production environments</li>
+                </ul>
+            </div>
+            <div>
+                <p class="row">
+                    <span><b>Software Engineer</b> at <a href="http://tronic.fm/" target="_blank">Tronic.fm</a></span>
+                    <span>Apr 2013 - Feb 2015</span>
+                </p>
+                <ul>
+                    <li>Worked on building the fundamentals, deployment and testing infrastructure</li>
+                    <li>Wrote code providing tight integration, RSVP’s and events sync with Facebook,
+                        ResidentAdviser, Overture
+                    </li>
+                    <li>Created queue-based daemons for multiple tasks</li>
+                </ul>
+            </div>
+            <div>
+                <p class="row">
+                    <span><b>Fullstack Developer</b> at <a href="http://medvedevmarketing.ru/" target="_blank">Medvedev Marketing</a></span>
+                    <span>Apr 2012 - Feb 2013</span>
+                </p>
+            </div>
+        </div>
 
-        <p><strong>Other:</strong></p>
+        <hr>
 
-        <p>I keep these IT-related books on my table:</p>
+        <h2>Education</h2>
+        <div>
+            <div>
+                <p class="row">
+                    <span>
+                        <b>Bachelor of Applied Informatik</b> at <a href="https://ai-bachelor.htw-berlin.de/"
+                                                                    target="_blank">HTW Berlin</a>
+                    </span>
+                    <span>Mar 2015 - Jul 2019</span>
+                </p>
+                <ul>
+                    <li>Worked in multiple group project: Android application for low-range modules communication/ mesh
+                        network, Statoil/C-CORE Iceberg Classifier Challenge, project management plan
+                    </li>
+                    <li>Bachelor thesis project: <a href="https://github.com/djagya/music-search-engine"
+                                                    target="_blank">«High-performance full-text search engine for a
+                        hybrid database of
+                        music metadata (c. 100 M songs) with interactive web features for autocomplete in data- entry
+                        forms and for database research using parametric search and ranking»</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <hr>
+
+        <h2>Other</h2>
+        <div>
+            <div>
+                <p class="row">
+                    <span>
+                        <b><a href="https://thingsofcommon.com/" target="_blank">Things of Common</a></b> side project
+                    </span>
+                    <span>Jul 2016 - present</span>
+                </p>
+                <ul>
+                    <li>Created a curated by bloggers map of places of multiple categories in different cities</li>
+                    <li>Generated custom vector map tiles to make them accessible offline as a PWA</li>
+                </ul>
+            </div>
+        </div>
+
+        <p><strong>Languages:</strong> English (fluent), German (semi-fluent), Russian (native)</p>
+        <p><strong>Interests:</strong> <a href="https://soundcloud.com/djagya" target="_blank">making music</a>,
+            reading*, <a href="https://www.instagram.com/djagya/" target="_blank">photography</a>, Yo-Yo, video games,
+            gardening
+        </p>
+
+        <p>*I keep these IT-related books on my table:</p>
         <ul>
             <li><a href="http://www.amazon.com/gp/product/0735619670/" target="_blank">“Code Complete”</a></li>
             <li><a href="http://www.amazon.com/gp/product/020161622X/" target="_blank">“The Pragmatic Programmer: From
@@ -160,35 +213,9 @@
             <li><a href="http://www.amazon.com/gp/product/0262033844/" target="_blank">“Introduction to Algorithms”</a>
             </li>
         </ul>
-
-        <p>Also I like to create and mix <a href="https://soundcloud.com/djagya" target="_blank" rel="me">music</a>,
-            studying, getting new knowledge, solving interesting and difficult things/tasks.<br>
-            Mathematics, Physic, Biology, Astronomy - these branches of science have always interested me, so in my
-            alternative life I would become a Biological Engineer or something like that.</p>
-
-        <hr class="no-print">
-
-        <div class="no-print">
-            <span class="no-print">
-        <a href="/public/files/resume_danil_zakablukovskii.pdf"
-           target="_blank"><strong>Download this Resume</strong></a> ·
-    </span>
-            <span class="print">
-         <a href="http://danilz.me/resume/"
-            target="_blank"><strong>View this Resume online</strong></a> ·
-    </span>
-            <a href="https://github.com/djagya" rel="me nofollow" target="_blank">Github</a> ·
-            <a href="https://www.upwork.com/o/profiles/users/_~01f7bfe08002f58952/" rel="me nofollow"
-               target="_blank">Upwork</a>
-
-            <address>
-                <a href="mailto:work@danilz.me">work@danilz.me</a> · Berlin, Germany
-            </address>
-
-        </div>
     </div>
 </div>
 
-<script src="/public/js/main.js"></script>
+<script src="public/js/main.js"></script>
 </body>
 </html>

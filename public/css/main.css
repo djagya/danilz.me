@@ -316,10 +316,6 @@ tbody tr:nth-child(odd) td, tbody tr:nth-child(odd) th {
  * Each post is wrapped in `.post` and is used on default and post layouts. Each
  * page is wrapped in `.page` and is only used on the page layout.
  */
-.page, .post {
-  margin-bottom: 4em;
-}
-
 /* Blog post or page title */
 .page-title {
   color: #303030;
@@ -714,7 +710,7 @@ html {
 }
 @media (min-width: 58em) {
   html {
-    font-size: 20px;
+    font-size: 18px;
   }
 }
 /*
@@ -789,8 +785,8 @@ a.sidebar-nav-item:hover, a.sidebar-nav-item:focus {
  * with a 25%-wide `.sidebar`.
  */
 .content {
-  padding-top: 4rem;
-  padding-bottom: 4rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
 }
 
 @media (min-width: 48em) {
@@ -902,6 +898,27 @@ body {
   color: #2e2e2e;
 }
 
+address {
+  font-style: normal;
+}
+
+hr {
+  margin-top: 1rem;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.intro {
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+}
+.intro p {
+  margin-bottom: 0.25rem;
+}
+
 .no-link {
   text-decoration: none;
   cursor: default;
@@ -928,16 +945,10 @@ body {
     margin-left: 18rem;
     margin-right: 2rem;
   }
-
-  .layout-reverse .content {
-    max-width: 28rem;
-    margin-left: 2rem;
-    margin-right: 18rem;
-  }
 }
 @media (min-width: 64em) {
   .sidebar {
-    width: 18rem;
+    width: 16rem;
     /* Sidebar footer for not sticky sidebar */
   }
   .sidebar .container:not(.sidebar-sticky) .sidebar-footer {
@@ -946,15 +957,9 @@ body {
   }
 
   .content {
-    max-width: 46rem;
-    margin-left: 22rem;
-    margin-right: 4rem;
-  }
-
-  .layout-reverse .content {
-    max-width: 46rem;
-    margin-left: 4rem;
-    margin-right: 22rem;
+    max-width: 50rem;
+    margin-left: 19rem;
+    margin-right: 3rem;
   }
 }
 @media (max-width: 64em) {
@@ -1049,7 +1054,7 @@ p + ul, p + dl {
 }
 
 .theme-moon .sidebar {
-  background: black url("/public/assets/3-moons-sidebar.png") repeat-y;
+  background: black url("../assets/3-moons-sidebar.png") repeat-y;
   background-size: 100% auto;
   color: rgba(255, 255, 255, 0.8);
 }
@@ -1109,30 +1114,11 @@ p + ul, p + dl {
   color: #9a9a9a;
 }
 
-.theme-base-green .sidebar {
-  background-color: #2ECC71;
-}
-.theme-base-green .content a, .theme-base-green .related-posts li a:hover {
-  color: #2ECC71;
-}
-
-.theme-base-light-green .sidebar {
-  background-color: #acc267;
-}
-.theme-base-light-green .content a, .theme-base-light-green .related-posts li a:hover {
-  color: #acc267;
-}
-
 .theme-base-dark-green .sidebar {
-  background-color: #687704;
+  background-color: #524c00;
 }
 .theme-base-dark-green .content a, .theme-base-dark-green .related-posts li a:hover {
-  color: #687704;
-}
-@media not print {
-  .theme-base-dark-green .content a:visited, .theme-base-dark-green .related-posts li a:hover:visited {
-    color: #49001B;
-  }
+  color: #bf360c;
 }
 
 /*# sourceMappingURL=main.css.map */

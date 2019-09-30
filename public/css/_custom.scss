@@ -3,6 +3,27 @@ body {
   color: $color;
 }
 
+address {
+  font-style: normal;
+}
+
+hr {
+  margin-top: 1rem;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.intro {
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+  p {
+    margin-bottom: 0.25rem;
+  }
+}
+
 .no-link {
   text-decoration: none;
   cursor: default;
@@ -32,17 +53,11 @@ body {
     margin-left: 18rem;
     margin-right: 2rem;
   }
-
-  .layout-reverse .content {
-    max-width: 28rem;
-    margin-left: 2rem;
-    margin-right: 18rem;
-  }
 }
 
 @media (min-width: 64em) {
   .sidebar {
-    width: 18rem;
+    width: 16rem;
 
     /* Sidebar footer for not sticky sidebar */
     .container:not(.sidebar-sticky) .sidebar-footer {
@@ -52,15 +67,9 @@ body {
   }
 
   .content {
-    max-width: 46rem;
-    margin-left: 22rem;
-    margin-right: 4rem;
-  }
-
-  .layout-reverse .content {
-    max-width: 46rem;
-    margin-left: 4rem;
-    margin-right: 22rem;
+    max-width: 50rem;
+    margin-left: 19rem;
+    margin-right: 3rem;
   }
 }
 
@@ -112,7 +121,7 @@ body {
   }
 }
 
-// Typograph
+// Typography
 strong {
   color: inherit;
 }
@@ -166,6 +175,7 @@ p + ul, p + dl {
 
   .sidebar-footer {
     font-size: 0.8rem;
+
     p {
       margin-bottom: 0;
     }
@@ -174,7 +184,7 @@ p + ul, p + dl {
 
 .theme-moon {
   .sidebar {
-    background: black url('/public/assets/3-moons-sidebar.png') repeat-y;
+    background: black url('../assets/3-moons-sidebar.png') repeat-y;
     background-size: 100% auto;
     color: rgba(255, 255, 255, 0.8);
   }
@@ -242,37 +252,12 @@ p + ul, p + dl {
   color: #9a9a9a;
 }
 
-// Themes
-.theme-base-green {
-  .sidebar {
-    background-color: #2ECC71;
-  }
-  .content a, .related-posts li a:hover {
-    color: #2ECC71;
-  }
-}
-
-.theme-base-light-green {
-  .sidebar {
-    background-color: rgb(172, 194, 103);
-  }
-  .content a, .related-posts li a:hover {
-    color: rgb(172, 194, 103);
-  }
-}
-
 .theme-base-dark-green {
   .sidebar {
-    background-color: #687704;
+    background-color: #524c00;
   }
-  .content a, .related-posts li a:hover {
-    color: #687704;
 
-    @media not print {
-      &:visited {
-        color: #49001B;
-        //color: #3A1C6C;
-      }
-    }
+  .content a, .related-posts li a:hover {
+    color: #bf360c;
   }
 }
