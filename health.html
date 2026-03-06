@@ -1,0 +1,1190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0a0f1e" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&family=Roboto+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+  <meta
+    name="description"
+    content="Health scores dashboard with compact views for overall score, key domains, and detailed health areas."
+  />
+  <title>Health Scores</title>
+  <style>
+    :root {
+      --bg: #0b1020;
+      --panel: rgba(10, 17, 35, 0.86);
+      --panel-2: rgba(16, 25, 48, 0.94);
+      --border: rgba(213, 191, 97, 0.18);
+      --text: #f1efe7;
+      --muted: #b0ad9d;
+      --good: #3df0b2;
+      --good-2: #86ffd4;
+      --mid: #f6c35f;
+      --warn: #ff8a65;
+      --bad: #ff5c8a;
+      --accent: #9fc2d7;
+      --accent-2: #d5bf61;
+      --accent-3: #bf360c;
+      --moon: #d5bf61;
+      --moon-soft: #7a744e;
+      --shadow: 0 20px 70px rgba(0, 0, 0, 0.4);
+      --radius: 24px;
+      --font: "PT Sans", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --mono: "Roboto Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      color-scheme: dark;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: var(--font);
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(213, 191, 97, 0.14), transparent 28%),
+        radial-gradient(circle at top right, rgba(159, 194, 215, 0.12), transparent 24%),
+        radial-gradient(circle at 50% 120%, rgba(191, 54, 12, 0.1), transparent 38%),
+        linear-gradient(180deg, #06070d 0%, #0a0d15 100%);
+    }
+
+    .wrap {
+      width: min(1320px, calc(100vw - 32px));
+      margin: 24px auto 48px;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: flex-end;
+      margin-bottom: 24px;
+    }
+
+    .eyebrow {
+      color: var(--accent-2);
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      font-size: 12px;
+      margin-bottom: 8px;
+      font-family: var(--mono);
+      text-shadow: 0 0 18px rgba(213, 191, 97, 0.18);
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(28px, 4vw, 46px);
+      line-height: 1.04;
+      letter-spacing: -0.04em;
+      font-family: var(--mono);
+      font-weight: 300;
+      text-transform: uppercase;
+      text-shadow: 0 0 24px rgba(213, 191, 97, 0.08);
+    }
+
+    .sub {
+      max-width: 720px;
+      margin-top: 10px;
+      color: var(--muted);
+      line-height: 1.5;
+      font-size: 15px;
+    }
+
+    .meta {
+      color: var(--muted);
+      text-align: right;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .section {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      margin-bottom: 24px;
+      overflow: hidden;
+    }
+
+    .section-header {
+      padding: 20px 24px 0;
+    }
+
+    .section-title {
+      margin: 0;
+      font-size: 20px;
+      letter-spacing: -0.02em;
+    }
+
+    .section-note {
+      margin: 8px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .radial-layout {
+      display: grid;
+      grid-template-columns: 360px 1fr;
+      gap: 8px;
+      align-items: stretch;
+      padding: 8px 16px 20px;
+    }
+
+    .badge-box {
+      display: grid;
+      place-items: center;
+      min-height: 380px;
+    }
+
+    .ring-label {
+      font-size: 12px;
+      fill: #c8bd8f;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-family: var(--mono);
+    }
+
+    .center-score {
+      font-size: 64px;
+      font-weight: 800;
+      fill: white;
+      letter-spacing: -0.05em;
+    }
+
+    .center-caption {
+      font-size: 14px;
+      fill: #c8bd8f;
+      font-family: var(--mono);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .badge-side {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(180px, 1fr));
+      gap: 14px;
+      align-content: center;
+      padding: 8px 8px 8px 0;
+    }
+
+    .mini-card,
+    .score-card,
+    .pill-card {
+      background: var(--panel-2);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 16px;
+    }
+
+    .mini-card .label,
+    .score-card .label,
+    .pill-card .label {
+      color: var(--muted);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 10px;
+    }
+
+    .mini-card .value,
+    .score-card .value {
+      font-size: 32px;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      margin-bottom: 8px;
+    }
+
+    .mini-card .desc,
+    .score-card .desc {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    .essential-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 1.2fr 1fr;
+      gap: 16px;
+      padding: 16px 24px 24px;
+    }
+
+    .hero-score {
+      padding: 18px 18px 16px;
+    }
+
+    .hero-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+
+    .score-chip {
+      min-width: 88px;
+      text-align: center;
+      border-radius: 999px;
+      padding: 10px 14px;
+      background: rgba(124, 156, 255, 0.14);
+      border: 1px solid rgba(124, 156, 255, 0.22);
+      font-weight: 700;
+      font-size: 14px;
+      color: #dfe7ff;
+    }
+
+    .hero-number {
+      font-size: 84px;
+      line-height: 0.92;
+      font-weight: 850;
+      letter-spacing: -0.07em;
+      margin: 8px 0 10px;
+    }
+
+    .hero-label {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .hero-summary {
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 14px;
+    }
+
+    .bar-list {
+      display: grid;
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .bar-row {
+      display: grid;
+      gap: 6px;
+    }
+
+    .bar-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: center;
+      font-size: 13px;
+    }
+
+    .bar-name {
+      color: #f1ede0;
+      font-weight: 400;
+      font-family: var(--mono);
+      letter-spacing: 0.02em;
+    }
+
+    .bar-score {
+      color: var(--muted);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .track {
+      height: 10px;
+      width: 100%;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.06);
+      overflow: hidden;
+    }
+
+    .fill {
+      height: 100%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--accent), var(--good));
+    }
+
+    .list {
+      margin: 0;
+      padding-left: 18px;
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 14px;
+    }
+
+    .list li + li {
+      margin-top: 8px;
+    }
+
+    .pill-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 14px;
+      margin-top: 12px;
+    }
+
+    .pill-card {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .pill-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .pill-score {
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+    }
+
+    .pill-title {
+      font-size: 15px;
+      font-weight: 400;
+      font-family: var(--mono);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .pill-summary {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border-radius: 999px;
+      padding: 6px 10px;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #dbe5ff;
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(240px, 1fr));
+      gap: 16px;
+      padding: 16px 24px 24px;
+    }
+
+    .score-card {
+      display: grid;
+      gap: 12px;
+      min-height: 210px;
+    }
+
+    .score-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .score-card .value {
+      font-size: 42px;
+      margin: 0;
+    }
+
+    .score-card .summary {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tag {
+      border-radius: 999px;
+      padding: 5px 9px;
+      font-size: 11px;
+      color: #d9e2ff;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .footer-note {
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.55;
+      padding: 0 24px 24px;
+    }
+
+    body::before,
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    body::before {
+      background:
+        linear-gradient(rgba(213, 191, 97, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(213, 191, 97, 0.03) 1px, transparent 1px);
+      background-size: 42px 42px;
+      mask-image: radial-gradient(circle at center, black 40%, transparent 90%);
+      opacity: 0.34;
+    }
+
+    body::after {
+      background:
+        radial-gradient(circle at 15% 20%, rgba(213, 191, 97, 0.16), transparent 24%),
+        radial-gradient(circle at 82% 12%, rgba(159, 194, 215, 0.12), transparent 20%),
+        radial-gradient(circle at 55% 80%, rgba(191, 54, 12, 0.08), transparent 18%);
+    }
+
+    .wrap {
+      margin-top: 28px;
+      margin-bottom: 56px;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 18px;
+    }
+
+    .hero-meta-card {
+      width: min(100%, 340px);
+      background: rgba(10, 18, 35, 0.8);
+      border: 1px solid rgba(213, 191, 97, 0.1);
+      border-radius: 16px;
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.03),
+        inset 0 0 24px rgba(213, 191, 97, 0.03);
+    }
+
+    .hero-meta-card {
+      padding: 14px;
+      display: grid;
+      gap: 10px;
+      text-align: left;
+    }
+
+    .meta-kicker {
+      color: var(--accent-2);
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      font-family: var(--mono);
+    }
+
+    .meta-kicker::before {
+      content: "◐";
+      display: inline-block;
+      margin-right: 8px;
+      color: var(--moon);
+      font-size: 10px;
+      transform: translateY(-1px);
+    }
+
+    .meta-line {
+      color: var(--text);
+      font-size: 12px;
+      line-height: 1.6;
+      letter-spacing: 0.01em;
+      font-family: var(--mono);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .meta-line .sep {
+      margin: 0 8px;
+      color: var(--moon-soft);
+    }
+
+    .detail-list {
+      margin: 0;
+      padding-left: 18px;
+      color: var(--muted);
+      line-height: 1.55;
+      font-size: 14px;
+    }
+
+    .detail-list li + li {
+      margin-top: 8px;
+    }
+
+    .section {
+      position: relative;
+      background:
+        linear-gradient(180deg, rgba(11, 19, 37, 0.94), rgba(8, 13, 26, 0.96)),
+        var(--panel);
+      border: 1px solid rgba(213, 191, 97, 0.1);
+    }
+
+    .section::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(213, 191, 97, 0.22), transparent);
+      opacity: 0.8;
+    }
+
+    .section-header {
+      padding-top: 22px;
+    }
+
+    .section-title {
+      font-size: 22px;
+      font-family: var(--mono);
+      font-weight: 400;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      text-shadow: 0 0 16px rgba(213, 191, 97, 0.08);
+    }
+
+    .section-title::before {
+      content: "◦";
+      display: inline-block;
+      margin-right: 10px;
+      color: var(--moon);
+    }
+
+    .section-note {
+      max-width: 720px;
+    }
+
+    .mini-card,
+    .score-card,
+    .pill-card {
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0.012)),
+        var(--panel-2);
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.03),
+        inset 0 0 18px rgba(213, 191, 97, 0.02);
+    }
+
+    .mini-card,
+    .score-card {
+      transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+    }
+
+    .mini-card:hover,
+    .score-card:hover {
+      transform: translateY(-2px);
+      border-color: rgba(213, 191, 97, 0.24);
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.04),
+        0 18px 32px rgba(0, 0, 0, 0.24),
+        0 0 24px rgba(213, 191, 97, 0.06);
+    }
+
+    .score-card {
+      grid-template-rows: auto auto auto 1fr auto;
+    }
+
+    .score-card-meter {
+      margin-top: -2px;
+    }
+
+    .score-card-meter .track {
+      height: 8px;
+    }
+
+    .detail-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .detail-block {
+      padding: 12px;
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.025);
+      border: 1px solid rgba(213, 191, 97, 0.08);
+    }
+
+    .detail-title {
+      margin-bottom: 8px;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-family: var(--mono);
+    }
+
+    .detail-title.positive {
+      color: var(--good-2);
+    }
+
+    .detail-title.watch {
+      color: var(--warn);
+    }
+
+    .detail-list {
+      font-size: 13px;
+    }
+
+    .tag {
+      background: rgba(213, 191, 97, 0.08);
+      border-color: rgba(213, 191, 97, 0.12);
+      font-family: var(--mono);
+    }
+
+    .score-chip,
+    .chip,
+    .mini-card .label,
+    .score-card .label,
+    .pill-card .label,
+    .detail-title,
+    .bar-score {
+      font-family: var(--mono);
+    }
+
+    .score-chip,
+    .chip {
+      box-shadow: inset 0 0 14px rgba(213, 191, 97, 0.08);
+      border-color: rgba(213, 191, 97, 0.18);
+      background: rgba(213, 191, 97, 0.08);
+      color: #f3e6b0;
+    }
+
+    .score-chip::before,
+    .chip::before,
+    .mini-card .label::before,
+    .score-card .label::before,
+    .pill-card .label::before,
+    .detail-title::before,
+    .bar-name::before,
+    .pill-title::before {
+      content: "•";
+      display: inline-block;
+      margin-right: 7px;
+      color: var(--moon);
+      font-size: 10px;
+      transform: translateY(-1px);
+    }
+
+    @media (max-width: 1100px) {
+      .radial-layout,
+      .essential-grid,
+      .cards-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .badge-side {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .meta {
+        text-align: left;
+      }
+
+    }
+
+    @media (max-width: 720px) {
+      .wrap {
+        width: min(100vw - 16px, 1320px);
+        margin-top: 12px;
+      }
+
+      .section-header,
+      .essential-grid,
+      .cards-grid,
+      .footer-note {
+        padding-left: 16px;
+        padding-right: 16px;
+      }
+
+      .radial-layout {
+        padding-left: 8px;
+        padding-right: 8px;
+      }
+
+      .badge-side {
+        grid-template-columns: 1fr;
+      }
+
+      .detail-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .topbar {
+        margin-bottom: 14px;
+      }
+
+      .hero-number {
+        font-size: 64px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="topbar">
+      <div class="hero-meta-card" id="meta"></div>
+    </header>
+
+    <section class="section">
+      <div class="section-header">
+        <h2 class="section-title">Primary Signal Radar</h2>
+        <p class="section-note">Five high-impact systems plotted for the quickest possible read of current biological status.</p>
+      </div>
+      <div class="radial-layout">
+        <div class="badge-box">
+          <svg id="radialSvg" width="330" height="330" viewBox="0 0 330 330" aria-label="Radial health badge"></svg>
+        </div>
+        <div class="badge-side" id="badgeSide"></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <h2 class="section-title">Current State Vector</h2>
+        <p class="section-note">The control panel view: overall status, strongest systems, drag factors, and the interventions with the highest expected leverage.</p>
+      </div>
+      <div class="essential-grid">
+        <div class="mini-card hero-score" id="heroScore"></div>
+        <div class="mini-card" id="essentialsBars"></div>
+        <div class="mini-card" id="essentialsLists"></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <h2 class="section-title">Systems Matrix</h2>
+        <p class="section-note">Domain-by-domain diagnostics showing where the organism is robust, where signals are unstable, and where monitoring still matters.</p>
+      </div>
+      <div class="cards-grid" id="cardsGrid"></div>
+      <div class="footer-note" id="footerNote"></div>
+    </section>
+  </div>
+
+  <script id="scores-data" type="application/json">
+{
+  "generated_on": "2026-03-07",
+  "subject": {
+    "age": 32,
+    "sex": "male",
+    "height_cm": 180,
+    "weight_kg": 68,
+    "body_fat_percent_est": 14,
+    "waist_cm": 79
+  },
+  "methodology": {
+    "type": "heuristic_health_scoring",
+    "scale": "0-100",
+    "meaning": {
+      "90_100": "excellent for age/context",
+      "80_89": "strong",
+      "70_79": "good but with notable watch-items",
+      "60_69": "mixed / meaningful improvement needed",
+      "40_59": "clear concern area",
+      "0_39": "high concern"
+    },
+    "important_note": "These scores are non-diagnostic heuristics based on the health profile, Apple Health-derived metrics, and the 2020 and 2026 blood-test summaries. They are intended for personal tracking and visualization, not medical diagnosis."
+  },
+  "overall": {
+    "score": 76,
+    "label": "good overall health with several high-performing systems, but meaningfully reduced by cardiovascular risk and recent substance/trauma burden",
+    "confidence": "medium"
+  },
+  "areas": [
+    {
+      "id": "body_composition",
+      "label": "Body Composition",
+      "score": 92,
+      "confidence": "medium",
+      "summary": "Lean, healthy body composition for age with low waist circumference and no excess-weight signal.",
+      "positives": ["BMI is lean", "Estimated body fat is around 14%", "Waist circumference is low-risk"],
+      "watch_items": ["No target weight set", "Weight data is sparse after Aug 2024"]
+    },
+    {
+      "id": "metabolic_health",
+      "label": "Metabolic Health",
+      "score": 95,
+      "confidence": "high",
+      "summary": "One of the strongest domains. Glucose handling and insulin sensitivity are excellent.",
+      "positives": ["Fasting glucose normal", "HbA1c excellent", "Very strong insulin sensitivity / HOMA-IR", "Lean physique supports low diabetes risk"],
+      "watch_items": ["Irregular eating pattern is not ideal even with good current markers"]
+    },
+    {
+      "id": "cardiovascular_risk",
+      "label": "Cardiovascular Risk",
+      "score": 63,
+      "confidence": "medium",
+      "summary": "Mixed picture: strong fitness and very low inflammation, but the lipid panel is the clearest biological weakness in the current profile.",
+      "positives": ["HDL is strong", "Lp(a) is very low", "hs-CRP is excellent", "Resting heart rate is favorable"],
+      "watch_items": ["LDL elevated", "Triglycerides elevated", "Non-HDL elevated", "Chronic cocaine exposure likely worsened vascular risk meaningfully"]
+    },
+    {
+      "id": "cardiorespiratory_fitness",
+      "label": "Cardiorespiratory Fitness",
+      "score": 84,
+      "confidence": "medium",
+      "summary": "Clearly above average for age, with good activity levels, favorable heart-rate markers, and a solid VO2 max.",
+      "positives": ["VO2 max is strong for age", "Resting heart rate is low/favorable", "Recent activity volume is good", "Walking heart-rate average improved in the recent window"],
+      "watch_items": ["Current pattern appears less aerobic than earlier outdoor-heavy periods"]
+    },
+    {
+      "id": "sleep_recovery",
+      "label": "Sleep & Recovery",
+      "score": 68,
+      "confidence": "medium",
+      "summary": "Sleep quantity is decent, but fragmentation and trauma-related stress wakeups reduce the score materially.",
+      "positives": ["Actual sleep time is adequate", "Sleep onset is fast", "Recent HRV trend is somewhat improved"],
+      "watch_items": ["Frequent brief awakenings / fragmented sleep proxy", "Stress-related wakeups in Jan-Feb 2026", "Bedtime is late and circadian timing may be unstable across locations"]
+    },
+    {
+      "id": "kidney_health",
+      "label": "Kidney Health",
+      "score": 79,
+      "confidence": "medium",
+      "summary": "Mostly good, but not perfect: creatinine/GFR are strong, while Cystatin C suggests mild stress worth monitoring.",
+      "positives": ["Creatinine normal", "eGFR strong", "No major kidney-damage signal"],
+      "watch_items": ["Cystatin C slightly elevated", "Past cocaine/ketamine use plausibly contributed subtle kidney stress"]
+    },
+    {
+      "id": "liver_pancreas",
+      "label": "Liver & Pancreas",
+      "score": 93,
+      "confidence": "high",
+      "summary": "A strong area. Despite prior substance burden, the measured liver and pancreatic markers stayed clean.",
+      "positives": ["AST/ALT/GGT all normal", "Bilirubin normal", "Amylase/lipase normal"],
+      "watch_items": ["Still worth protecting given past substance exposure"]
+    },
+    {
+      "id": "blood_immune_inflammation",
+      "label": "Blood, Immune & Inflammation",
+      "score": 94,
+      "confidence": "high",
+      "summary": "Very strong domain. CBC is stable and inflammation is exceptionally low.",
+      "positives": ["CBC is balanced", "No anemia", "No infection/inflammation signal", "hs-CRP is excellent"],
+      "watch_items": []
+    },
+    {
+      "id": "hormonal_thyroid",
+      "label": "Hormonal & Thyroid",
+      "score": 86,
+      "confidence": "medium",
+      "summary": "Overall strong endocrine picture with excellent thyroid function and testosterone, mildly held back by prolactin and SHBG.",
+      "positives": ["Thyroid markers are excellent", "Total testosterone is strong", "Free testosterone is good", "DHEA-S is strong for age"],
+      "watch_items": ["Prolactin elevated", "SHBG slightly high"]
+    },
+    {
+      "id": "micronutrients",
+      "label": "Micronutrients & Fatty Acids",
+      "score": 90,
+      "confidence": "medium",
+      "summary": "Strong nutritional biomarker picture overall, with excellent omega-3 and vitamin D status.",
+      "positives": ["Vitamin D is excellent", "B12/HoloTC are strong", "Magnesium, selenium, zinc are all good", "Omega-3 index is excellent"],
+      "watch_items": ["Vitamin B6 is mildly high from supplementation", "Folate is normal but not especially high"]
+    },
+    {
+      "id": "lifestyle_behavioral_risk",
+      "label": "Lifestyle & Behavioral Risk",
+      "score": 52,
+      "confidence": "medium",
+      "summary": "Strong on smoking, alcohol moderation, activity, and body composition; significantly reduced by the recent heavy cocaine/ketamine history and stress trauma burden.",
+      "positives": ["Non-smoker", "Alcohol use appears low", "Active and lean", "Good sunlight exposure recently"],
+      "watch_items": ["Heavy cocaine/ketamine exposure in 2024-2025", "Late-2025 abusive/violent relationship trauma", "Diet quality is only moderate"]
+    },
+    {
+      "id": "mental_emotional_state",
+      "label": "Mental & Emotional State",
+      "score": 64,
+      "confidence": "low_to_medium",
+      "summary": "Currently improved and functioning, but recent history includes severe distress and trauma, so this area remains a real recovery domain rather than a strength domain.",
+      "positives": ["Current anxiety reported as none", "Mood currently more stable", "Motivation remains present", "No brain fog reported"],
+      "watch_items": ["Severe crisis period in Dec 2025", "Stress-related wakeups in Jan-Feb 2026", "Ongoing recovery from abuse and high-intensity substance period", "Job remains a current stressor"]
+    }
+  ],
+  "strengths": [
+    "Metabolic health is excellent",
+    "Inflammation is extremely low",
+    "Liver and pancreas markers are strong",
+    "Thyroid and testosterone are strong",
+    "Body composition is lean and favorable",
+    "Omega-3 and vitamin D status are excellent",
+    "Activity level and fitness are above average for age"
+  ],
+  "main_risks": [
+    "Elevated LDL and triglycerides are the clearest current biological risk",
+    "Recent cocaine/ketamine history materially worsens cardiovascular and recovery picture",
+    "Sleep is adequate in duration but fragmented",
+    "Cystatin C suggests mild kidney stress worth rechecking",
+    "Recent trauma/stress history remains clinically relevant"
+  ],
+  "priority_actions": [
+    {
+      "priority": 1,
+      "action": "Maintain complete cessation of cocaine and ketamine",
+      "expected_effect": "largest improvement in cardiovascular risk, prolactin, kidney stress, sleep stability, and overall recovery score"
+    },
+    {
+      "priority": 2,
+      "action": "Improve lipid-driving diet factors",
+      "details": ["reduce refined carbs and sugar", "increase soluble fiber", "reduce saturated fat", "keep alcohol low"]
+    },
+    {
+      "priority": 3,
+      "action": "Stabilize sleep and trauma recovery",
+      "details": ["protect sleep schedule", "continue emotional processing / therapy-style recovery work if available", "monitor whether danger-type wakeups fully resolve"]
+    },
+    {
+      "priority": 4,
+      "action": "Retest bloodwork after a clean recovery period",
+      "details": ["repeat lipids", "repeat prolactin", "repeat cystatin C / kidney markers"]
+    }
+  ],
+  "age_context": {
+    "summary": "For a 32-year-old lean male, the broad picture is stronger than average overall. The main reason the overall score is not higher is not baseline health quality, but the combination of elevated lipids, recent substance-related risk, sleep fragmentation, and recent trauma burden."
+  }
+}
+  </script>
+
+  <script>
+    const data = JSON.parse(document.getElementById("scores-data").textContent);
+
+    const keyAreaIds = [
+      "metabolic_health",
+      "cardiovascular_risk",
+      "sleep_recovery",
+      "cardiorespiratory_fitness",
+      "mental_emotional_state"
+    ];
+
+    const areaMap = new Map(data.areas.map(area => [area.id, area]));
+    const keyAreas = keyAreaIds.map(id => areaMap.get(id)).filter(Boolean);
+
+    const grade = score => {
+      if (score >= 90) return { label: "Excellent", color: "var(--good)" };
+      if (score >= 80) return { label: "Strong", color: "var(--good-2)" };
+      if (score >= 70) return { label: "Good", color: "var(--accent)" };
+      if (score >= 60) return { label: "Mixed", color: "var(--mid)" };
+      return { label: "Watch", color: "var(--warn)" };
+    };
+
+    const scoreColor = score => {
+      if (score >= 90) return "#38d39f";
+      if (score >= 80) return "#69e7b8";
+      if (score >= 70) return "#7c9cff";
+      if (score >= 60) return "#f6c35f";
+      return "#ff7d7d";
+    };
+
+    const escapeHtml = value => String(value).replace(/[&<>"']/g, char => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    })[char]);
+
+    const strongest = [...data.areas].sort((a, b) => b.score - a.score).slice(0, 3);
+    const weakest = [...data.areas].sort((a, b) => a.score - b.score).slice(0, 3);
+
+    document.getElementById("meta").innerHTML = `
+      <div class="meta-kicker">Profile</div>
+      <div class="meta-line">
+        ${data.subject.age}y / ${escapeHtml(data.subject.sex)}
+        <span class="sep">|</span>
+        ${data.subject.height_cm}cm / ${data.subject.weight_kg}kg
+        <span class="sep">|</span>
+        bf ~${data.subject.body_fat_percent_est}%
+        <span class="sep">|</span>
+        waist ${data.subject.waist_cm}cm
+        <span class="sep">|</span>
+        ${data.generated_on}
+      </div>
+    `;
+
+    function polar(cx, cy, r, angle) {
+      const a = (angle - 90) * Math.PI / 180;
+      return { x: cx + r * Math.cos(a), y: cy + r * Math.sin(a) };
+    }
+
+    function arcPath(cx, cy, r, start, end) {
+      const p1 = polar(cx, cy, r, start);
+      const p2 = polar(cx, cy, r, end);
+      const large = end - start > 180 ? 1 : 0;
+      return `M ${p1.x} ${p1.y} A ${r} ${r} 0 ${large} 1 ${p2.x} ${p2.y}`;
+    }
+
+    function renderRadial() {
+      const svg = document.getElementById("radialSvg");
+      const cx = 165;
+      const cy = 165;
+      const sweep = 58;
+      const gap = 14;
+      const startBase = -150;
+      const rings = keyAreas.map((area, i) => ({
+        area,
+        start: startBase + i * (sweep + gap),
+        end: startBase + i * (sweep + gap) + sweep,
+        radius: 126 - i * 16
+      }));
+
+      const bgArcs = rings.map(({ start, end, radius }) =>
+        `<path d="${arcPath(cx, cy, radius, start, end)}" stroke="rgba(255,255,255,0.08)" stroke-width="11" fill="none" stroke-linecap="round" />`
+      ).join("");
+
+      const fgArcs = rings.map(({ area, start, end, radius }) => {
+        const span = end - start;
+        const scoreEnd = start + span * (area.score / 100);
+        return `<path d="${arcPath(cx, cy, radius, start, scoreEnd)}" stroke="${scoreColor(area.score)}" stroke-width="11" fill="none" stroke-linecap="round" />`;
+      }).join("");
+
+      const labels = rings.map(({ area, start, end, radius }) => {
+        const mid = (start + end) / 2;
+        const p = polar(cx, cy, radius + 20, mid);
+        return `<text x="${p.x}" y="${p.y}" text-anchor="middle" class="ring-label">${area.label.replace(" & ", "/")}</text>`;
+      }).join("");
+
+      svg.innerHTML = `
+        <defs>
+          <filter id="softGlow">
+            <feGaussianBlur stdDeviation="6" result="blur"></feGaussianBlur>
+            <feMerge>
+              <feMergeNode in="blur"></feMergeNode>
+              <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+          </filter>
+        </defs>
+        <circle cx="${cx}" cy="${cy}" r="62" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.08)" />
+        ${bgArcs}
+        <g filter="url(#softGlow)">${fgArcs}</g>
+        ${labels}
+        <text x="${cx}" y="${cy - 4}" text-anchor="middle" class="center-score">${data.overall.score}</text>
+        <text x="${cx}" y="${cy + 24}" text-anchor="middle" class="center-caption">Overall</text>
+      `;
+
+      document.getElementById("badgeSide").innerHTML = keyAreas.map(area => {
+        const g = grade(area.score);
+        return `
+          <div class="mini-card">
+            <div class="label">${area.label}</div>
+            <div class="value" style="color:${g.color}">${area.score}</div>
+            <div class="desc">${area.summary}</div>
+          </div>
+        `;
+      }).join("");
+    }
+
+    function renderEssentials() {
+      const overallGrade = grade(data.overall.score);
+      document.getElementById("heroScore").innerHTML = `
+        <div class="hero-top">
+          <div class="label">Total System Score</div>
+          <div class="score-chip">${overallGrade.label} / ${escapeHtml(data.overall.confidence)}</div>
+        </div>
+        <div class="hero-number" style="color:${overallGrade.color}">${data.overall.score}</div>
+        <div class="hero-label">${escapeHtml(data.overall.label)}</div>
+        <div class="hero-summary">${escapeHtml(data.age_context.summary)}</div>
+      `;
+
+      document.getElementById("essentialsBars").innerHTML = `
+        <div class="label">Signal Map</div>
+        <div class="bar-list">
+          ${[...data.areas]
+            .sort((a, b) => b.score - a.score)
+            .slice(0, 8)
+            .map(area => `
+              <div class="bar-row">
+                <div class="bar-head">
+                  <div class="bar-name">${area.label}</div>
+                  <div class="bar-score">${area.score}</div>
+                </div>
+                <div class="track"><div class="fill" style="width:${area.score}% ; background: linear-gradient(90deg, ${scoreColor(Math.max(area.score - 15, 0))}, ${scoreColor(area.score)});"></div></div>
+              </div>
+            `).join("")}
+        </div>
+      `;
+
+      document.getElementById("essentialsLists").innerHTML = `
+        <div class="label">Fast Parse</div>
+        <div class="pill-grid">
+          <div class="pill-card">
+            <div class="pill-top">
+              <div class="pill-title">Peak systems</div>
+              <div class="pill-score" style="color:var(--good)">+${strongest.length}</div>
+            </div>
+            <ul class="list">${strongest.map(x => `<li><strong>${escapeHtml(x.label)}</strong> / ${x.score}</li>`).join("")}</ul>
+          </div>
+          <div class="pill-card">
+            <div class="pill-top">
+              <div class="pill-title">Drag factors</div>
+              <div class="pill-score" style="color:var(--warn)">-${weakest.length}</div>
+            </div>
+            <ul class="list">${weakest.map(x => `<li><strong>${escapeHtml(x.label)}</strong> / ${x.score}</li>`).join("")}</ul>
+          </div>
+          <div class="pill-card">
+            <div class="pill-top">
+              <div class="pill-title">Next protocols</div>
+              <div class="pill-score" style="color:var(--accent)">${data.priority_actions.length}</div>
+            </div>
+            <ul class="list">${data.priority_actions.slice(0, 3).map(x => `<li>${escapeHtml(x.action)}</li>`).join("")}</ul>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderCards() {
+      document.getElementById("cardsGrid").innerHTML = data.areas.map(area => {
+        const g = grade(area.score);
+        const positiveItems = (area.positives || []).slice(0, 3).map(item => `<li>${escapeHtml(item)}</li>`).join("");
+        const watchItems = (area.watch_items || []).slice(0, 3).map(item => `<li>${escapeHtml(item)}</li>`).join("")
+          || "<li>No active watch-items recorded.</li>";
+        return `
+          <article class="score-card">
+            <div class="score-head">
+              <div>
+                <div class="label">${escapeHtml(area.label)}</div>
+                <div class="value" style="color:${g.color}">${area.score}</div>
+              </div>
+              <div class="chip">${g.label} / ${escapeHtml(area.confidence.replaceAll("_", " "))}</div>
+            </div>
+            <div class="summary">${escapeHtml(area.summary)}</div>
+            <div class="score-card-meter">
+              <div class="track">
+                <div class="fill" style="width:${area.score}%; background: linear-gradient(90deg, ${scoreColor(Math.max(area.score - 20, 0))}, ${scoreColor(area.score)});"></div>
+              </div>
+            </div>
+            <div class="detail-grid">
+              <div class="detail-block">
+                <div class="detail-title positive">Positive signals</div>
+                <ul class="detail-list">${positiveItems}</ul>
+              </div>
+              <div class="detail-block">
+                <div class="detail-title watch">Monitor closely</div>
+                <ul class="detail-list">${watchItems}</ul>
+              </div>
+            </div>
+            <div class="tag-row">
+              <span class="tag">${escapeHtml(area.id.replaceAll("_", " "))}</span>
+            </div>
+          </article>
+        `;
+      }).join("");
+
+      document.getElementById("footerNote").textContent = data.methodology.important_note;
+    }
+
+    renderRadial();
+    renderEssentials();
+    renderCards();
+  </script>
+</body>
+</html>
