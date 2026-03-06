@@ -1,0 +1,374 @@
+{
+  "generated_on": "2026-03-07",
+  "subject": {
+    "age": 32,
+    "sex": "male",
+    "height_cm": 180,
+    "weight_kg": 68,
+    "body_fat_percent_est": 14,
+    "waist_cm": 79
+  },
+  "methodology": {
+    "type": "heuristic_health_scoring",
+    "scale": "0-100",
+    "meaning": {
+      "90_100": "excellent for age/context",
+      "80_89": "strong",
+      "70_79": "good but with notable watch-items",
+      "60_69": "mixed / meaningful improvement needed",
+      "40_59": "clear concern area",
+      "0_39": "high concern"
+    },
+    "important_note": "These scores are non-diagnostic heuristics based on the health profile, Apple Health-derived metrics, and the 2020 and 2026 blood-test summaries. They are intended for personal tracking and visualization, not medical diagnosis."
+  },
+  "overall": {
+    "score": 76,
+    "label": "good overall health with several high-performing systems, but meaningfully reduced by cardiovascular risk and recent substance/trauma burden",
+    "confidence": "medium"
+  },
+  "areas": [
+    {
+      "id": "body_composition",
+      "label": "Body Composition",
+      "score": 92,
+      "confidence": "medium",
+      "summary": "Lean, healthy body composition for age with low waist circumference and no excess-weight signal.",
+      "positives": [
+        "BMI is lean",
+        "Estimated body fat is around 14%",
+        "Waist circumference is low-risk"
+      ],
+      "watch_items": [
+        "No target weight set",
+        "Weight data is sparse after Aug 2024"
+      ],
+      "key_metrics": {
+        "weight_kg": 66,
+        "height_cm": 180,
+        "body_fat_percent_est": 14,
+        "waist_cm": 79
+      }
+    },
+    {
+      "id": "metabolic_health",
+      "label": "Metabolic Health",
+      "score": 95,
+      "confidence": "high",
+      "summary": "One of the strongest domains. Glucose handling and insulin sensitivity are excellent.",
+      "positives": [
+        "Fasting glucose normal",
+        "HbA1c excellent",
+        "Very strong insulin sensitivity / HOMA-IR",
+        "Lean physique supports low diabetes risk"
+      ],
+      "watch_items": [
+        "Irregular eating pattern is not ideal even with good current markers"
+      ],
+      "key_metrics": {
+        "glucose_mmol_l": 4.77,
+        "hba1c_percent": 4.9,
+        "insulin_mU_l": 0.59,
+        "homa_ir": 0.1
+      }
+    },
+    {
+      "id": "cardiovascular_risk",
+      "label": "Cardiovascular Risk",
+      "score": 63,
+      "confidence": "medium",
+      "summary": "Mixed picture: strong fitness and very low inflammation, but the lipid panel is the clearest biological weakness in the current profile.",
+      "positives": [
+        "HDL is strong",
+        "Lp(a) is very low",
+        "hs-CRP is excellent",
+        "Resting heart rate is favorable"
+      ],
+      "watch_items": [
+        "LDL elevated",
+        "Triglycerides elevated",
+        "Non-HDL elevated",
+        "Chronic cocaine exposure likely worsened vascular risk meaningfully"
+      ],
+      "key_metrics": {
+        "total_cholesterol_mmol_l": 5.51,
+        "ldl_mmol_l": 3.65,
+        "hdl_mmol_l": 1.58,
+        "triglycerides_mmol_l": 2.04,
+        "non_hdl_mmol_l": 3.94,
+        "apob_g_l": 0.83,
+        "lp_a_nmol_l": 13.5,
+        "hs_crp_ug_ml": 0.2
+      }
+    },
+    {
+      "id": "cardiorespiratory_fitness",
+      "label": "Cardiorespiratory Fitness",
+      "score": 84,
+      "confidence": "medium",
+      "summary": "Clearly above average for age, with good activity levels, favorable heart-rate markers, and a solid VO2 max.",
+      "positives": [
+        "VO2 max is strong for age",
+        "Resting heart rate is low/favorable",
+        "Recent activity volume is good",
+        "Walking heart-rate average improved in the recent window"
+      ],
+      "watch_items": [
+        "Current pattern appears less aerobic than earlier outdoor-heavy periods"
+      ],
+      "key_metrics": {
+        "vo2max_ml_kg_min": 42.27,
+        "resting_hr_bpm_latest": 55,
+        "resting_hr_bpm_14d_avg": 58,
+        "walking_hr_bpm_14d_avg": 87,
+        "steps_14d_avg": 10900
+      }
+    },
+    {
+      "id": "sleep_recovery",
+      "label": "Sleep & Recovery",
+      "score": 68,
+      "confidence": "medium",
+      "summary": "Sleep quantity is decent, but fragmentation and trauma-related stress wakeups reduce the score materially.",
+      "positives": [
+        "Actual sleep time is adequate",
+        "Sleep onset is fast",
+        "Recent HRV trend is somewhat improved"
+      ],
+      "watch_items": [
+        "Frequent brief awakenings / fragmented sleep proxy",
+        "Stress-related wakeups in Jan-Feb 2026",
+        "Bedtime is late and circadian timing may be unstable across locations"
+      ],
+      "key_metrics": {
+        "actual_sleep_hours_14d": 7.1,
+        "actual_sleep_hours_30d": 6.8,
+        "sleep_fragmentation_awake_minutes_14d": 44,
+        "awake_segments_14d_proxy": 9,
+        "bedtime_median_14d": "01:22",
+        "waketime_median_14d": "10:24",
+        "hrv_sdnn_ms_14d_avg": 55.1
+      }
+    },
+    {
+      "id": "kidney_health",
+      "label": "Kidney Health",
+      "score": 79,
+      "confidence": "medium",
+      "summary": "Mostly good, but not perfect: creatinine/GFR are strong, while Cystatin C suggests mild stress worth monitoring.",
+      "positives": [
+        "Creatinine normal",
+        "eGFR strong",
+        "No major kidney-damage signal"
+      ],
+      "watch_items": [
+        "Cystatin C slightly elevated",
+        "Past cocaine/ketamine use plausibly contributed subtle kidney stress"
+      ],
+      "key_metrics": {
+        "creatinine_umol_l": 88,
+        "gfr_ckd_epi": 99,
+        "cystatin_c_mg_l": 1.02,
+        "gfr_from_cystatin_c": 85
+      }
+    },
+    {
+      "id": "liver_pancreas",
+      "label": "Liver & Pancreas",
+      "score": 93,
+      "confidence": "high",
+      "summary": "A strong area. Despite prior substance burden, the measured liver and pancreatic markers stayed clean.",
+      "positives": [
+        "AST/ALT/GGT all normal",
+        "Bilirubin normal",
+        "Amylase/lipase normal"
+      ],
+      "watch_items": [
+        "Still worth protecting given past substance exposure"
+      ],
+      "key_metrics": {
+        "ast_ukat_l": 0.35,
+        "alt_ukat_l": 0.43,
+        "ggt_ukat_l": 0.3,
+        "bilirubin_umol_l": 8.6,
+        "amylase_ukat_l": 0.67,
+        "lipase_ukat_l": 0.65
+      }
+    },
+    {
+      "id": "blood_immune_inflammation",
+      "label": "Blood, Immune & Inflammation",
+      "score": 94,
+      "confidence": "high",
+      "summary": "Very strong domain. CBC is stable and inflammation is exceptionally low.",
+      "positives": [
+        "CBC is balanced",
+        "No anemia",
+        "No infection/inflammation signal",
+        "hs-CRP is excellent"
+      ],
+      "watch_items": [],
+      "key_metrics": {
+        "wbc": 6.5,
+        "hemoglobin_mmol_l": 9.0,
+        "platelets": 213,
+        "hs_crp_ug_ml": 0.2
+      }
+    },
+    {
+      "id": "hormonal_thyroid",
+      "label": "Hormonal & Thyroid",
+      "score": 86,
+      "confidence": "medium",
+      "summary": "Overall strong endocrine picture with excellent thyroid function and testosterone, mildly held back by prolactin and SHBG.",
+      "positives": [
+        "Thyroid markers are excellent",
+        "Total testosterone is strong",
+        "Free testosterone is good",
+        "DHEA-S is strong for age"
+      ],
+      "watch_items": [
+        "Prolactin elevated",
+        "SHBG slightly high"
+      ],
+      "key_metrics": {
+        "tsh": 1.6,
+        "free_t3_pmol_l": 5.64,
+        "free_t4_pmol_l": 17.63,
+        "total_testosterone_nmol_l": 28.1,
+        "free_testosterone_ng_l": 14.0,
+        "prolactin_ug_l": 26.7,
+        "shbg_nmol_l": 55.8
+      }
+    },
+    {
+      "id": "micronutrients",
+      "label": "Micronutrients & Fatty Acids",
+      "score": 90,
+      "confidence": "medium",
+      "summary": "Strong nutritional biomarker picture overall, with excellent omega-3 and vitamin D status.",
+      "positives": [
+        "Vitamin D is excellent",
+        "B12/HoloTC are strong",
+        "Magnesium, selenium, zinc are all good",
+        "Omega-3 index is excellent"
+      ],
+      "watch_items": [
+        "Vitamin B6 is mildly high from supplementation",
+        "Folate is normal but not especially high"
+      ],
+      "key_metrics": {
+        "vitamin_d_ng_ml": 41.3,
+        "b12_pg_ml": 615,
+        "holotc_pmol_l": 150,
+        "magnesium_rbc_mmol_l": 2.27,
+        "zinc_umol_l": 96,
+        "selenium_ug_l": 126,
+        "omega3_index_percent": 9.6,
+        "vitamin_b6_ug_l": 51.1
+      }
+    },
+    {
+      "id": "lifestyle_behavioral_risk",
+      "label": "Lifestyle & Behavioral Risk",
+      "score": 52,
+      "confidence": "medium",
+      "summary": "Strong on smoking, alcohol moderation, activity, and body composition; significantly reduced by the recent heavy cocaine/ketamine history and stress trauma burden.",
+      "positives": [
+        "Non-smoker",
+        "Alcohol use appears low",
+        "Active and lean",
+        "Good sunlight exposure recently"
+      ],
+      "watch_items": [
+        "Heavy cocaine/ketamine exposure in 2024-2025",
+        "Late-2025 abusive/violent relationship trauma",
+        "Diet quality is only moderate"
+      ],
+      "key_metrics": {
+        "smoking": "none",
+        "alcohol": "rare",
+        "daylight_minutes_14d": 67.5,
+        "headphone_audio_dba_14d": 70.0
+      }
+    },
+    {
+      "id": "mental_emotional_state",
+      "label": "Mental & Emotional State",
+      "score": 64,
+      "confidence": "low_to_medium",
+      "summary": "Currently improved and functioning, but recent history includes severe distress and trauma, so this area remains a real recovery domain rather than a strength domain.",
+      "positives": [
+        "Current anxiety reported as none",
+        "Mood currently more stable",
+        "Motivation remains present",
+        "No brain fog reported"
+      ],
+      "watch_items": [
+        "Severe crisis period in Dec 2025",
+        "Stress-related wakeups in Jan-Feb 2026",
+        "Ongoing recovery from abuse and high-intensity substance period",
+        "Job remains a current stressor"
+      ],
+      "key_metrics": {
+        "stress_level_current": "low_to_moderate",
+        "anxiety": "none",
+        "mood_stability": "stable_now_with_recent_swings",
+        "motivation": "fluctuating_to_high"
+      }
+    }
+  ],
+  "strengths": [
+    "Metabolic health is excellent",
+    "Inflammation is extremely low",
+    "Liver and pancreas markers are strong",
+    "Thyroid and testosterone are strong",
+    "Body composition is lean and favorable",
+    "Omega-3 and vitamin D status are excellent",
+    "Activity level and fitness are above average for age"
+  ],
+  "main_risks": [
+    "Elevated LDL and triglycerides are the clearest current biological risk",
+    "Recent cocaine/ketamine history materially worsens cardiovascular and recovery picture",
+    "Sleep is adequate in duration but fragmented",
+    "Cystatin C suggests mild kidney stress worth rechecking",
+    "Recent trauma/stress history remains clinically relevant"
+  ],
+  "priority_actions": [
+    {
+      "priority": 1,
+      "action": "Maintain complete cessation of cocaine and ketamine",
+      "expected_effect": "largest improvement in cardiovascular risk, prolactin, kidney stress, sleep stability, and overall recovery score"
+    },
+    {
+      "priority": 2,
+      "action": "Improve lipid-driving diet factors",
+      "details": [
+        "reduce refined carbs and sugar",
+        "increase soluble fiber",
+        "reduce saturated fat",
+        "keep alcohol low"
+      ]
+    },
+    {
+      "priority": 3,
+      "action": "Stabilize sleep and trauma recovery",
+      "details": [
+        "protect sleep schedule",
+        "continue emotional processing / therapy-style recovery work if available",
+        "monitor whether danger-type wakeups fully resolve"
+      ]
+    },
+    {
+      "priority": 4,
+      "action": "Retest bloodwork after a clean recovery period",
+      "details": [
+        "repeat lipids",
+        "repeat prolactin",
+        "repeat cystatin C / kidney markers"
+      ]
+    }
+  ],
+  "age_context": {
+    "summary": "For a 32-year-old lean male, the broad picture is stronger than average overall. The main reason the overall score is not higher is not baseline health quality, but the combination of elevated lipids, recent substance-related risk, sleep fragmentation, and recent trauma burden."
+  }
+}
